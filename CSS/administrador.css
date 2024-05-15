@@ -1,0 +1,21 @@
+.administrador_titulo {
+    text-align: center;
+    color: rgba(24, 129, 129, 0.986);
+    font-size: 30px;
+}
+
+.productos {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+form[action="nuevo_producto.php"] input[name="descripcion"] {
+    width: 100px;
+    height: 100px;
+}
+
+form[action="nuevo_producto.php"] {
+    display: flex;
+    flex-direction: column;
+}

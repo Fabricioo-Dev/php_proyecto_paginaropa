@@ -1,0 +1,103 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #dbeaff;
+    /* Fondo celeste claro */
+    font-family: Arial, sans-serif;
+    color: #fff;
+    /* Color blanco para el texto */
+}
+a{
+    text-decoration: none;
+}
+
+/* Estilos para el header */
+.header-inicio {
+    background-color: #0d1722;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Centrar verticalmente */
+    height: 70px;
+}
+
+.header-inicio img {
+    height: 60px;
+    /* Ajusta el tamaño del logo */
+    width: auto;
+}
+
+/* Estilos para el formulario de ingreso */
+.ingreso {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Espacio superior */
+    margin: 45px auto;
+
+    background-color: #fff;
+    /* Fondo blanco */
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    /* Ancho del formulario */
+    max-width: 400px;
+    /* Máximo ancho */
+    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.5);
+    /* Sombra suave */
+}
+
+.ingreso h1 {
+    color: #0d1722;
+    /* Color azul oscuro para el título */
+    text-align: center;
+    margin-bottom: 20px;
+    /* Espacio inferior */
+}
+.ingreso label{
+    color: #0d1722;
+}
+.ingreso label,
+.ingreso input[type="text"],
+.ingreso input[type="password"],
+.ingreso input[type="submit"] {
+    width: 100%;
+    margin-bottom: 10px;
+    /* Espacio inferior */
+}
+
+.ingreso input[type="submit"],
+.ingreso button {
+    background-color: #0d1722;
+    /* Fondo azul oscuro */
+    color: #fff;
+    /* Texto blanco */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ingreso input[type="submit"]:hover,
+.ingreso button:hover {
+    background-color: #052d4f;
+    /* Cambia de color al pasar el ratón */
+}
+.ingreso button{
+    text-align: center;
+    width: 66%;
+    margin-bottom: 10px;
+}
+.ingreso button a{
+    color: #fff;
+}
+
+
+.mensaje_error {
+    color: rgb(228, 45, 45);
+    text-align: center;
+    font-size: 10px;
+}
+
