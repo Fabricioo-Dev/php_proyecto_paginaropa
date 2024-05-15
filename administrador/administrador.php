@@ -17,9 +17,9 @@
         <h4>Añadir Producto</h4>
         <form action="./nuevo_producto.php" method="post" enctype="multipart/form-data">
             <label for="nombre">Prenda</label>
-            <input type="text" name="nombre" placeholder="Ingresar Nombre"></br>
-            <label for="descripcion">Descripcion</label></br>
-            <textarea name="descripcion"></textarea></br>
+            <input type="text" name="nombre" placeholder="Ingresar Nombre">
+            <label for="descripcion">Descripcion</label>
+            <textarea name="descripcion"></textarea>
             <label for="talla">Talla</label>
             <select name="talla">
                 <option value="XS">XS</option>
@@ -27,13 +27,17 @@
                 <option value="M">M</option>
                 <option value="L">L</option>
                 <option value="XL">XL</option>
-            </select></br>
+            </select>
             <label for="color">Color</label>
-            <input type="text" name="color"></br>
+            <input type="text" name="color">
             <label for="precio">Precio</label>
-            <input type="text" name="precio" id="nuevo_producto_precio"></br>
+            <input type="text" name="precio" id="nuevo_producto_precio">
+            <label for="marca">Marca</label>
+            <input type="text" name="marca">
+            <label for="proveedor">Proveedor</label>
+            <input type="text" name="proveedor">
             <label for="imagen">Imagen</label>
-            <input type="file" name="imagen" accept="image/*" class="nuevo_producto_imagen" placeholder="Ingresar el archivo de imagen"></br>
+            <input type="file" name="imagen" accept="image/*" class="nuevo_producto_imagen" placeholder="Ingresar el archivo de imagen">
 
             <div class="preview">
                 <p>No se detectan archivos en el preview</p>

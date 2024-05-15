@@ -15,7 +15,7 @@ form[action="nuevo_producto.php"] input[name="descripcion"] {
     height: 100px;
 }
 
-form[action="nuevo_producto.php"] {
+form[action="./nuevo_producto.php"] {
     display: flex;
     flex-direction: column;
 }
