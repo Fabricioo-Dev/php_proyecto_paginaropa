@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
-    
     <!------ Font Awesome ------->
     <script src="https://kit.fontawesome.com/5f6de38f20.js" crossorigin="anonymous"></script>
     <!-----CSS----->
-    <link rel="stylesheet" href="./CSS/productos.css">
+    <link rel="stylesheet" href="./CSS/nosotros.css">
+    <title>Nosotros</title>
 </head>
 
 <body>
@@ -19,7 +18,7 @@
         </div>
         <nav>
             <ul>
-                <li class="#Nosotros"><a href="nosotros.php">Nosotros</a></li>
+                <li class="#Nosotros"><a href="productos.php">Nosotros</a></li>
                 <li class="#Productos"><a href="productos.php">Prendas</a></li>
                 <li class="carrito"><a href="" class="carrito">Carrito <i class="fa-solid fa-cart-shopping"></i></a>
                 </li>
@@ -36,9 +35,10 @@
     </header>
 
     <main class="productos">
-        <h1>Productos ELITE</h1>
+        <h1>Contactaa con nuestras Redes</h1>
+        <a href="">Elite</a>
         <div class="seccion1">
-            
+
         </div>
     </main>
 </body>

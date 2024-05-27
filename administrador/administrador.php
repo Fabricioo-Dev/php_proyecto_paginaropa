@@ -9,10 +9,35 @@
 </head>
 
 <body>
-    <?php session_start(); ?>
+    <?php //session_start(); 
+    ?>
+    <header class="header">
+        <div class="logo">
+            <a href="/index.php"><img src="./../img/logo-marca-nuevo.jpg" alt="Logo de la marca"></a>
+        </div>
+        <nav>
+            <ul>
+                <li class="#Nosotros"><a href="./../nosotros.php">Nosotros</a></li>
+                <li class="#Productos"><a href="./../productos.php">Prendas</a></li>
+                <li class="carrito"><a href="" class="carrito">Carrito <i class="fa-solid fa-cart-shopping"></i></a>
+                </li>
+            </ul>
+        </nav>
+        <div class="ingreso">
+            <?php session_start();
+            if (isset($_SESSION['nombre'])) { ?>
+                <a href="./../pagina_perfil.php" class="registrar"><button>Mi Cuenta <i class="fa-solid fa-user"></i></button></a>
+            <?php } else { ?>
+                <a href="./../login.php" class="registrar"><button>Ingresar <i class="fa-solid fa-user"></i></button></a>
+            <?php }; ?>
+        </div>
+    </header>
     <h1>Hola Administrador: <?php echo "{$_SESSION['nombre']} {$_SESSION['apellido']}"; ?></h1>
     <hr>
     <h3 class="administrador_titulo">Administrar productos</h3>
+    <div class="proveedor">
+
+    </div>
     <div class="productos">
         <h4>Añadir Producto</h4>
         <form action="./nuevo_producto.php" method="post" enctype="multipart/form-data">
@@ -33,9 +58,40 @@
             <label for="precio">Precio</label>
             <input type="text" name="precio" id="nuevo_producto_precio">
             <label for="marca">Marca</label>
-            <input type="text" name="marca">
+            <select name="marca" id="productos_marca">
+                <?php
+                include "./../conexionBD.php";
+
+                $consulta = "SELECT nombre, id_marca FROM marca";
+
+                $resultado_marca = mysqli_query($conexion,$consulta);
+
+                while($i = $resultado_marca->fetch_assoc()){
+                    echo "<option value='{$i["id_marca"]}'> {$i["nombre"]} </option>";
+                }
+
+
+
+                ?>
+
+            </select>
             <label for="proveedor">Proveedor</label>
-            <input type="text" name="proveedor">
+            <select name="proveedor" id="productos_proveedor">
+                <?php
+                
+
+                $consulta = "SELECT nombre, id_proveedor FROM proveedor";
+
+
+                $resultado_proveedor = mysqli_query($conexion, $consulta);
+
+                while ($i = $resultado_proveedor->fetch_assoc()) {
+                    echo "<option value='{$i["id_proveedor"]}'> {$i["nombre"]} </option>";
+                }
+
+                ?>
+
+            </select>
             <label for="imagen">Imagen</label>
             <input type="file" name="imagen" accept="image/*" class="nuevo_producto_imagen" placeholder="Ingresar el archivo de imagen">
 

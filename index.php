@@ -29,7 +29,7 @@
         </div>
         <nav>
             <ul>
-                <li class="#Nosotros"><a href="productos.php">Nosotros</a></li>
+                <li class="#Nosotros"><a href="nosotros.php">Nosotros</a></li>
                 <li class="#Productos"><a href="productos.php">Prendas</a></li>
                 <li class="carrito"><a href="" class="carrito">Carrito <i class="fa-solid fa-cart-shopping"></i></a></li>
                 <?php session_start();
@@ -49,7 +49,7 @@
     <!----- MAIN ----->
     <main>
         <section class="nosotros">
-            <h2>Proyecto de tienda de remeras por Fabricio y Tomas</h2>
+            <h2>Proyecto de tienda de remeras por Fabricio, Tomas y Uriel</h2>
             <p>"ELITE: Elegancia y Distinción en Cada Fibra
 
                 Descubre ELITE, la marca que redefinirá tu estilo con sus remeras de algodón de primera calidad. Con un

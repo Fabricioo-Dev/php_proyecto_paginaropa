@@ -9,21 +9,36 @@ if(isset($_POST["nombre"]) && isset($_POST["descripcion"]) && isset($_POST["tall
     $descripcion = $_POST["descripcion"];
     $tallas = $_POST["talla"];
     $color = $_POST["color"];
-    $proveedor = $_POST["proveedor"];
-    $marca = $_POST["marca"];
+    $id_proveedor = $_POST["proveedor"];
+    $id_marca = $_POST["marca"];
     $imagen = $_FILES["imagen"]["name"]; //se usa FILES en vez de POST ya que es un archivo lo que se guarda
     $imagen_tmp = $_FILES["imagen"]["tmp_name"]; // Obtener la ubicación temporal del archivo
     $precio = $_POST["precio"];
 
     // Mover el archivo de imagen al directorio deseado
-    $directorio_destino = "./../img/productos_img/" . $imagen;
+    $directorio_destino = "/img/productos_img/" . $imagen;
+
     /*move_uploaded_file(): Esta función de PHP toma dos argumentos: la ubicación temporal del archivo ($_FILES["imagen"]["tmp_name"]) y la ubicación final donde deseas mover el archivo (la ruta completa formada por $directorio_destino . $imagen). La función se encarga de mover físicamente el archivo desde su ubicación temporal a la ubicación definitiva que especificaste.*/
     move_uploaded_file($_FILES["imagen"]["tmp_name"], $directorio_destino);
 
-    $consulta = "INSERT INTO prenda(nombre, descripcion, color, talle, imagen, precio, id_proveedor,id_marca) 
-                VALUES ('$nombre', '$descripcion', '$color', '$tallas', '$directorio_destino', '$precio', '$proveedor', '$marca')";
 
-    $resultado = mysqli_query($conexion,$consulta);
+    mysqli_begin_transaction($conexion);
+
+    try{
+
+        if(isset($id_marca) && isset($id_proveedor)){
+
+            $consulta = "INSERT INTO prenda(nombre, descripcion, color, talle, imagen, precio, id_proveedor,id_marca) VALUES ('$nombre', '$descripcion', '$color', '$tallas', '$directorio_destino', '$precio', '$id_proveedor', '$id_marca')";
+
+            $resultado = mysqli_query($conexion, $consulta);
+        } 
+        mysqli_commit($conexion);
+    }catch(mysqli_sql_exception $exception){
+        mysqli_rollback($conexion);
+        throw $exception;
+    }
+
+    
 
     if ($resultado){
         echo "<h2>prenda guardada con exito</h2>";
