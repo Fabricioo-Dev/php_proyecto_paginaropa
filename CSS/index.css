@@ -1,3 +1,4 @@
+/*--- Estilos para el NAV ---*/
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 *{
@@ -79,6 +80,7 @@ header {
     background-color: #ffffff;
     transform: scale(1);
 }
+/*-- FIN estilos NAV --*/
 
 
 /*----Colores pag----*/

@@ -1,3 +1,4 @@
+/*--- Estilos NAV ---*/
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 * {
@@ -88,6 +89,7 @@ header {
     background-color: #ffffff;
     transform: scale(1);
 }
+/*--- FIN estilos NAV ---*/
 
 .administrador_titulo {
     text-align: center;
@@ -101,13 +103,63 @@ header {
     width: 50%;
     margin-left: 5px;
 }
+/*---NUEVO PROVEEDOR---*/
+.proveedor {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 5px;
+    /*background-color: #1f1818;*/
+}
+h4 {
+    text-align: center;
+}
+.proveedor form[action="./nuevo_proveedorBD.php"]{
+    display: flex;
+    flex-direction: column;
+}
+.proveedor form[action="./nuevo_proveedorBD.php"] .btn_nuevo_proveedor{
+    margin-top: 10px;
+    justify-content: center;
+    text-align: center;
+}
+/*---NUEVA MARCA---*/
+.marca {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 5px;
+    /*background-color: #1f1818;*/
+}
 
-form[action="nuevo_producto.php"] input[name="descripcion"] {
+h4 {
+    text-align: center;
+}
+
+.marca form[action="./nueva_marcaBD.php"] {
+    display: flex;
+    flex-direction: column;
+}
+
+.marca form[action="./nueva_marcaBD.php"] .btn_nuevo_proveedor {
+    margin-top: 10px;
+    justify-content: center;
+    text-align: center;
+}
+
+/*---NUEVA PRENDA---*/
+.producto {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-left: 5px;
+}
+form[action="nuevo_productoBD.php"] input[name="descripcion"] {
     width: 100px;
     height: 100px;
 }
 
-form[action="./nuevo_producto.php"] {
+form[action="./nuevo_productoBD.php"] {
     display: flex;
     flex-direction: column;
 }

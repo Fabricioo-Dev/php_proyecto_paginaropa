@@ -17,7 +17,7 @@
     <!------ Font Awesome ------->
     <script src="https://kit.fontawesome.com/5f6de38f20.js" crossorigin="anonymous"></script>
     <!-----CSS----->
-    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./CSS/index.css">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
             <ul>
                 <li class="#Nosotros"><a href="nosotros.php">Nosotros</a></li>
                 <li class="#Productos"><a href="productos.php">Prendas</a></li>
-                <li class="carrito"><a href="" class="carrito">Carrito <i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li class="carrito"><a href="carrito.php" class="carrito">Carrito <i class="fa-solid fa-cart-shopping"></i></a></li>
                 <?php session_start();
                 if (isset($_SESSION['tipo_de_usuario']) && $_SESSION['tipo_de_usuario'] == 1){?>
                     <li class="#administrador"><a href="./administrador/administrador.php">Administradores</a></li>

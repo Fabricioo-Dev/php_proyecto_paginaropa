@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!------ Font Awesome ------->
+    <script src="https://kit.fontawesome.com/5f6de38f20.js" crossorigin="anonymous"></script>
+    <!-----CSS----->
     <link rel="stylesheet" href="./../CSS/administrador.css">
     <title>Administradores</title>
 </head>
@@ -19,171 +22,205 @@
             <ul>
                 <li class="#Nosotros"><a href="./../nosotros.php">Nosotros</a></li>
                 <li class="#Productos"><a href="./../productos.php">Prendas</a></li>
-                <li class="carrito"><a href="" class="carrito">Carrito <i class="fa-solid fa-cart-shopping"></i></a>
-                </li>
+                <li class="carrito"><a href="./../carrito.php" class="carrito">Carrito <i
+                            class="fa-solid fa-cart-shopping"></i></a></li>
+                <?php session_start();
+                if (isset($_SESSION['tipo_de_usuario']) && $_SESSION['tipo_de_usuario'] == 1) { ?>
+                <li class="#administrador"><a href="./administrador/administrador.php">Administradores</a></li>
+                <?php }; ?>
             </ul>
         </nav>
         <div class="ingreso">
-            <?php session_start();
+            <?php
             if (isset($_SESSION['nombre'])) { ?>
-                <a href="./../pagina_perfil.php" class="registrar"><button>Mi Cuenta <i class="fa-solid fa-user"></i></button></a>
+            <a href="./../pagina_perfil.php" class="registrar"><button>Mi Cuenta <i
+                        class="fa-solid fa-user"></i></button></a>
             <?php } else { ?>
-                <a href="./../login.php" class="registrar"><button>Ingresar <i class="fa-solid fa-user"></i></button></a>
+            <a href="./../login.php" class="registrar"><button>Ingresar <i class="fa-solid fa-user"></i></button></a>
             <?php }; ?>
         </div>
     </header>
     <h1>Hola Administrador: <?php echo "{$_SESSION['nombre']} {$_SESSION['apellido']}"; ?></h1>
     <hr>
     <h3 class="administrador_titulo">Administrar productos</h3>
-    <div class="proveedor">
-
-    </div>
-    <div class="productos">
-        <h4>Añadir Producto</h4>
-        <form action="./nuevo_producto.php" method="post" enctype="multipart/form-data">
-            <label for="nombre">Prenda</label>
-            <input type="text" name="nombre" placeholder="Ingresar Nombre">
-            <label for="descripcion">Descripcion</label>
-            <textarea name="descripcion"></textarea>
-            <label for="talla">Talla</label>
-            <select name="talla">
-                <option value="XS">XS</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-            </select>
-            <label for="color">Color</label>
-            <input type="text" name="color">
-            <label for="precio">Precio</label>
-            <input type="text" name="precio" id="nuevo_producto_precio">
-            <label for="marca">Marca</label>
-            <select name="marca" id="productos_marca">
-                <?php
-                include "./../conexionBD.php";
-
-                $consulta = "SELECT nombre, id_marca FROM marca";
-
-                $resultado_marca = mysqli_query($conexion,$consulta);
-
-                while($i = $resultado_marca->fetch_assoc()){
-                    echo "<option value='{$i["id_marca"]}'> {$i["nombre"]} </option>";
-                }
+    <main class="productos">
+        <!--Ingresar PROVEEDOR-->
+        <div class="proveedor">
+            <h4><b>Añadir Proveedor</b></h4>
+            <form action="./nuevo_proveedorBD.php" method="post">
+                <label for="nombre">Nombre Proveedor</label>
+                <input type="text" name="nombre" required>
+                <label for="telefono">Telefono Proveedor</label>
+                <input type="text" name="telefono" id="nuevo_producto_precio" required>
+                <label for="gmail">Correo Electronico</label>
+                <input type="text" name="gmail" required>
+                <input type="submit" value="Nuevo proveedor" class="btn_nuevo_proveedor">
+            </form>
+        </div>
 
 
+        <!--Ingresar MARCA-->
+        <div class="marca">
+            <h4><b>Añadir Marca</b></h4>
+            <form action="./nueva_marcaBD.php" method="post">
+                <label for="nombre">Nombre Marca</label>
+                <input type="text" name="nombre" required>
+                <label for="des_de_marca">Descripcion de Marca</label>
+                <textarea name="descripcion" id=""></textarea>
+                <input type="submit" value="Nueva Marca" class="btn_nuevo_proveedor">
+            </form>
+        </div>
 
-                ?>
+        <!--Ingresar PRENDA-->
+        <div class="producto">
+            <h4><b>Añadir Producto</b></h4>
+            <form action="./nuevo_productoBD.php" method="post" enctype="multipart/form-data">
+                <label for="nombre">Prenda</label>
+                <input type="text" name="nombre" required>
+                <label for="descripcion">Descripcion</label>
+                <textarea name="descripcion"></textarea>
+                <label for="talla">Talla</label>
+                <select name="talla" required>
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <label for="color">Color</label>
+                <input type="text" name="color" required>
+                <label for="precio">Precio</label>
+                <input type="text" name="precio" id="nuevo_producto_precio" required>
+                <label for="marca">Marca</label>
+                <select name="marca" id="productos_marca">
+                    <?php
+                    include "./../conexionBD.php";
 
-            </select>
-            <label for="proveedor">Proveedor</label>
-            <select name="proveedor" id="productos_proveedor">
-                <?php
-                
+                    $consulta = "SELECT nombre, id_marca FROM marca";
 
-                $consulta = "SELECT nombre, id_proveedor FROM proveedor";
+                    $resultado_marca = mysqli_query($conexion, $consulta);
+
+                    while ($i = $resultado_marca->fetch_assoc()) {
+                        echo "<option value='{$i["id_marca"]}'> {$i["nombre"]} </option>";
+                    }
 
 
-                $resultado_proveedor = mysqli_query($conexion, $consulta);
 
-                while ($i = $resultado_proveedor->fetch_assoc()) {
-                    echo "<option value='{$i["id_proveedor"]}'> {$i["nombre"]} </option>";
-                }
+                    ?>
 
-                ?>
+                </select>
+                <label for="proveedor">Proveedor</label>
+                <select name="proveedor" id="productos_proveedor">
+                    <?php
 
-            </select>
-            <label for="imagen">Imagen</label>
-            <input type="file" name="imagen" accept="image/*" class="nuevo_producto_imagen" placeholder="Ingresar el archivo de imagen">
 
-            <div class="preview">
-                <p>No se detectan archivos en el preview</p>
-            </div>
-            <input type="submit" value="Subir nuevo producto">
-        </form>
-    </div>
+                    $consulta = "SELECT nombre, id_proveedor FROM proveedor";
 
+
+                    $resultado_proveedor = mysqli_query($conexion, $consulta);
+
+                    while ($i = $resultado_proveedor->fetch_assoc()) {
+                        echo "<option value='{$i["id_proveedor"]}'> {$i["nombre"]} </option>";
+                    }
+
+                    ?>
+
+                </select>
+                <label for="imagen">Imagen</label>
+                <input type="file" name="imagen" accept="image/*" class="nuevo_producto_imagen"
+                    placeholder="Ingresar el archivo de imagen" required>
+
+                <div class="preview">
+                    <p>No se detectan archivos en el preview</p>
+                </div>
+                <input type="submit" value="Subir nuevo producto">
+            </form>
+        </div>
+    </main>
 
 </body>
 
 
 <script>
-    function setInputFilter(textbox, inputFilter, errMsg) {
-        ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop", "focusout"].forEach(function(event) {
-            textbox.addEventListener(event, function(e) {
-                if (inputFilter(this.value)) {
-                    // Accepted value.
-                    if (["keydown", "mousedown", "focusout"].indexOf(e.type) >= 0) {
-                        this.classList.remove("input-error");
-                        this.setCustomValidity("");
-                    }
-
-                    this.oldValue = this.value;
-                    this.oldSelectionStart = this.selectionStart;
-                    this.oldSelectionEnd = this.selectionEnd;
-                } else if (this.hasOwnProperty("oldValue")) {
-                    // Rejected value: restore the previous one.
-                    this.classList.add("input-error");
-                    this.setCustomValidity(errMsg);
-                    this.reportValidity();
-                    this.value = this.oldValue;
-                    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-                } else {
-                    // Rejected value: nothing to restore.
-                    this.value = "";
-                }
-            });
-        });
-    }
-
-
-    function updateImageDisplay() {
-        while (preview.firstChild) {
-            preview.removeChild(preview.firstChild);
-        }
-
-        const curFiles = input.files;
-        if (curFiles.length === 0) {
-            const para = document.createElement("p");
-            para.textContent = "No hay imagenes que hayan sido agregadas";
-            preview.appendChild(para);
-        } else {
-            const list = document.createElement("ol");
-            preview.appendChild(list);
-
-            for (const file of curFiles) {
-                const listItem = document.createElement("li");
-                const para = document.createElement("p");
-                if (file) {
-                    para.textContent = `Nombre archivo ${file.name}, Tamaño archivo ${file.size}.`;
-                    const image = document.createElement("img");
-                    image.src = URL.createObjectURL(file);
-                    image.alt = image.title = file.name;
-
-                    listItem.appendChild(image);
-                    listItem.appendChild(para);
-                } else {
-                    para.textContent = `Nombre archivo ${file.name}: No es un tipo válido de archivo. Actualiza tu seleccion de archivo.`;
-                    listItem.appendChild(para);
+function setInputFilter(textbox, inputFilter, errMsg) {
+    ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop", "focusout"].forEach(function(
+        event) {
+        textbox.addEventListener(event, function(e) {
+            if (inputFilter(this.value)) {
+                // Accepted value.
+                if (["keydown", "mousedown", "focusout"].indexOf(e.type) >= 0) {
+                    this.classList.remove("input-error");
+                    this.setCustomValidity("");
                 }
 
-                list.appendChild(listItem);
+                this.oldValue = this.value;
+                this.oldSelectionStart = this.selectionStart;
+                this.oldSelectionEnd = this.selectionEnd;
+            } else if (this.hasOwnProperty("oldValue")) {
+                // Rejected value: restore the previous one.
+                this.classList.add("input-error");
+                this.setCustomValidity(errMsg);
+                this.reportValidity();
+                this.value = this.oldValue;
+                this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+            } else {
+                // Rejected value: nothing to restore.
+                this.value = "";
             }
-        }
+        });
+    });
+}
+
+
+function updateImageDisplay() {
+    while (preview.firstChild) {
+        preview.removeChild(preview.firstChild);
     }
 
+    const curFiles = input.files;
+    if (curFiles.length === 0) {
+        const para = document.createElement("p");
+        para.textContent = "No hay imagenes que hayan sido agregadas";
+        preview.appendChild(para);
+    } else {
+        const list = document.createElement("ol");
+        preview.appendChild(list);
+
+        for (const file of curFiles) {
+            const listItem = document.createElement("li");
+            const para = document.createElement("p");
+            if (file) {
+                para.textContent = `Nombre archivo ${file.name}, Tamaño archivo ${file.size}.`;
+                const image = document.createElement("img");
+                image.src = URL.createObjectURL(file);
+                image.alt = image.title = file.name;
+
+                listItem.appendChild(image);
+                listItem.appendChild(para);
+            } else {
+                para.textContent =
+                    `Nombre archivo ${file.name}: No es un tipo válido de archivo. Actualiza tu seleccion de archivo.`;
+                listItem.appendChild(para);
+            }
+
+            list.appendChild(listItem);
+        }
+    }
+}
 
 
 
-    setInputFilter(document.getElementById("nuevo_producto_precio"), function(value) {
-        return /^\d*\.?\d*$/.test(value); // Permite solo valores digitos (numericos)
-    }, "Solo valores numericos se pueden añadir");
+
+setInputFilter(document.getElementById("nuevo_producto_precio"), function(value) {
+    return /^\d*\.?\d*$/.test(value); // Permite solo valores digitos (numericos)
+}, "Solo valores numericos se pueden añadir");
 
 
 
-    const input = document.querySelector(".nuevo_producto_imagen");
-    const preview = document.querySelector(".preview");
+const input = document.querySelector(".nuevo_producto_imagen");
+const preview = document.querySelector(".preview");
 
-    input.addEventListener("change", updateImageDisplay);
+input.addEventListener("change", updateImageDisplay);
 </script>
 
 </html>
