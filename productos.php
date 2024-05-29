@@ -8,6 +8,8 @@
 
     <!------ Font Awesome ------->
     <script src="https://kit.fontawesome.com/5f6de38f20.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
     <!-----CSS----->
     <link rel="stylesheet" href="./CSS/productos.css">
 </head>
@@ -29,7 +31,7 @@
             </ul>
         </nav>
         <div class="ingreso">
-            <?php 
+            <?php
             if (isset($_SESSION['nombre'])) { ?>
                 <a href="pagina_perfil.php" class="registrar"><button>Mi Cuenta <i class="fa-solid fa-user"></i></button></a>
             <?php } else { ?>
@@ -40,10 +42,20 @@
 
     <main class="productos">
         <h1>Productos ELITE</h1>
-        <div class="seccion1">
-
+        <div class="seccion_container_productos">
+            <div class="seccion_container_productos_tarjeta">
+                <img src="./img/muestra1.jpg" alt="Imagen del producto">
+                <h4>Nombre del producto</h4>
+                <p>Descripcion</p>
+                <p>Talla</p>
+                <p>Color</p>
+                <p>Precio</p>
+                <button type="submit">Agregar al carrito</button>
+            </div>
         </div>
     </main>
 </body>
+
+
 
 </html>

@@ -88,3 +88,28 @@ header {
     background-color: #ffffff;
     transform: scale(1);
 }
+
+main h1 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.seccion_container_productos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.seccion_container_productos_tarjeta {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    border-radius: 2px;
+    max-width: 200px;
+    margin-left: 10px;
+}
+
+.seccion_container_productos_tarjeta img {
+    width: 100%;
+    height: 200px;
+}

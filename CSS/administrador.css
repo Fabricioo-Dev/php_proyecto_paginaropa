@@ -91,6 +91,7 @@ header {
 }
 /*--- FIN estilos NAV ---*/
 
+
 .administrador_titulo {
     text-align: center;
     color: rgba(24, 129, 129, 0.986);
@@ -100,7 +101,7 @@ header {
 .productos {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
     margin-left: 5px;
 }
 /*---NUEVO PROVEEDOR---*/
@@ -132,7 +133,7 @@ h4 {
     /*background-color: #1f1818;*/
 }
 
-h4 {
+.marca h4{
     text-align: center;
 }
 
@@ -151,7 +152,7 @@ h4 {
 .producto {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 50%;
     margin-left: 5px;
 }
 form[action="nuevo_productoBD.php"] input[name="descripcion"] {
@@ -162,4 +163,16 @@ form[action="nuevo_productoBD.php"] input[name="descripcion"] {
 form[action="./nuevo_productoBD.php"] {
     display: flex;
     flex-direction: column;
+}
+
+
+form input[type="submit"] {
+    margin-bottom: 25px;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
