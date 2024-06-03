@@ -39,6 +39,7 @@
 
     <main class="productos">
         <h1>Contactaa con nuestras Redes</h1>
+        <p>En esta seccion hablar sobre este proyecto ficticio de una tienda de ropa onlina y abajo nuestras redes</p>
         <a href="">Elite</a>
         <div class="seccion1">
 
