@@ -16,8 +16,6 @@ while($fila = $resultado_produtos->fetch_assoc()){
     $talle = $fila['talle'];
     $imagen = $fila['imagen'];
 
-    echo $imagen;
-
 
     $precio = $fila['precio'];
 
@@ -36,6 +34,8 @@ while($fila = $resultado_produtos->fetch_assoc()){
     array_push($array_productos, $prenda_assoc);
 }
 
-echo json_encode($array_productos, JSON_UNESCAPED_SLASHES);
+$array_final = json_encode($array_productos, JSON_UNESCAPED_SLASHES);
+
+echo $array_final;
 
 ?>

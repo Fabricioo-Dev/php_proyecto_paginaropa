@@ -43,18 +43,46 @@
     <main class="productos">
         <h1>Productos ELITE</h1>
         <div class="seccion_container_productos">
-            <div class="seccion_container_productos_tarjeta">
-                <img src="./img/muestra1.jpg" alt="Imagen del producto">
-                <h4>Nombre del producto</h4>
-                <p>Descripcion</p>
-                <p>Talla</p>
-                <p>Color</p>
-                <p>Precio</p>
-                <button type="submit">Agregar al carrito</button>
-            </div>
         </div>
     </main>
 </body>
+
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            url: "/restful_api/productosajax.php",
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+
+                let container_producto = document.getElementsByClassName("seccion_container_productos");
+                let wrapper = document.createElement("div");
+                wrapper.innerHTML = "";
+                wrapper.classList.add("wrapper_container_productos");
+
+                    for (const prenda of data) {
+                        let prendaHtml = `
+                    <div class="seccion_container_productos_tarjeta">
+                        <img src="${prenda['imagen']}" alt="Imagen del producto">
+                        <h4>${prenda['nombre']}</h4>
+                        <p>${prenda['descripcion']}</p>
+                        <p>${prenda['talle']}</p>
+                        <p>${prenda['color']}</p>
+                        <p>${prenda['precio']}</p>
+                        <button type="submit">Agregar al carrito</button>
+                    </div>
+                    `
+                        wrapper.innerHTML += prendaHtml;
+                    }
+
+                container_producto[0].appendChild(wrapper);
+
+
+
+            }
+        });
+    });
+</script>
 
 
 
