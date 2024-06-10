@@ -1,8 +1,8 @@
-
 <?php
-include "./../conexionBD.php";
+include "./../Backend/conexionBD.php";
 
-if(isset($_POST["nombre"]) && isset($_POST["descripcion"]) && isset($_POST["talla"]) && isset($_POST["color"]) && isset($_FILES["imagen"]) && isset($_POST["precio"])){
+if(isset($_POST['subir'])){ 
+//(isset($_POST["nombre"]) && isset($_POST["descripcion"]) && isset($_POST["talla"]) && isset($_POST["color"]) && isset($_FILES["imagen"]) && isset($_POST["precio"])){
 
 
     $nombre = $_POST["nombre"];
@@ -11,16 +11,12 @@ if(isset($_POST["nombre"]) && isset($_POST["descripcion"]) && isset($_POST["tall
     $color = $_POST["color"];
     $id_proveedor = $_POST["proveedor"];
     $id_marca = $_POST["marca"];
-    $imagen = $_FILES["imagen"]["name"]; //se usa FILES en vez de POST ya que es un archivo lo que se guarda
-    $imagen_tmp = $_FILES["imagen"]["tmp_name"]; // Obtener la ubicación temporal del archivo
+    $imagen = $_FILES['imagen']['name']; //se usa FILES en vez de POST ya que es un archivo lo que se guarda
+    $imagen_tmp = $_FILES['imagen']['tmp_name']; // Obtener la ubicación temporal del archivo
     $precio = $_POST["precio"];
 
     // Mover el archivo de imagen al directorio deseado
-    $directorio_destino = "/img/productos_img/" . $imagen;
-
-    /*move_uploaded_file(): Esta función de PHP toma dos argumentos: la ubicación temporal del archivo ($_FILES["imagen"]["tmp_name"]) y la ubicación final donde deseas mover el archivo (la ruta completa formada por $directorio_destino . $imagen). La función se encarga de mover físicamente el archivo desde su ubicación temporal a la ubicación definitiva que especificaste.*/
-    move_uploaded_file($_FILES["imagen"]["tmp_name"], $directorio_destino);
-
+    $directorio_destino = './../img/productos_img/'.$imagen;
 
     mysqli_begin_transaction($conexion);
 
@@ -28,7 +24,7 @@ if(isset($_POST["nombre"]) && isset($_POST["descripcion"]) && isset($_POST["tall
 
         if(isset($id_marca) && isset($id_proveedor)){
 
-            $consulta = "INSERT INTO prenda(nombre, descripcion, color, talle, imagen, precio, id_proveedor,id_marca) VALUES ('$nombre', '$descripcion', '$color', '$tallas', '$directorio_destino', '$precio', '$id_proveedor', '$id_marca')";
+            $consulta = "INSERT INTO prenda(nombre, descripcion, color, talle, imagen, precio, id_proveedor,id_marca) VALUES ('$nombre', '$descripcion', '$color', '$tallas', '$imagen', '$precio', '$id_proveedor', '$id_marca')";
 
             $resultado = mysqli_query($conexion, $consulta);
         } 
@@ -41,7 +37,8 @@ if(isset($_POST["nombre"]) && isset($_POST["descripcion"]) && isset($_POST["tall
     
 
     if ($resultado){
-        echo "<h2>prenda guardada con exito</h2>";
+        /*move_uploaded_file(): Esta función de PHP toma dos argumentos: la ubicación temporal del archivo ($_FILES["imagen"]["tmp_name"]) y la ubicación final donde deseas mover el archivo (la ruta completa formada por $directorio_destino . $imagen). La función se encarga de mover físicamente el archivo desde su ubicación temporal a la ubicación definitiva que especificaste.*/
+        move_uploaded_file($imagen_tmp, $directorio_destino);
         header('Location: administrador.php');
         exit();
     } else {

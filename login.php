@@ -13,7 +13,7 @@
         <a href="index.php"><img src="./img/logo-marca.jpg" alt="Logo de la marca"></a>
     </div>
     <div class="ingreso">
-        <form action="verificar_login.php" method="post">
+        <form action="Backend/verificar_login.php" method="post">
             <h1>Ingresá tu Cuenta</h1>
             <label for="email">Correo Electrónico</label><br>
             <input type="text" name="email" placeholder="Email" required><br>

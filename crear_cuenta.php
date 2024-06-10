@@ -13,7 +13,7 @@
         <a href="index.php"><img src="./img/logo-marca.jpg" alt="Logo de la marca"></a>
     </div>
     <div class="ingreso">
-        <form action="crear_usuarioBD.php" method="post">
+        <form action="Backend/crear_usuarioBD.php" method="post">
             <h1>Crear Cuenta</h1>
             <label for="nombre">Nombre</label><br>
             <input type="text" name="nombre" required><br>
@@ -23,10 +23,11 @@
             <input type="text" name="email" required><br>
             <label for="contraseña">Contraseña</label><br>
             <input type="password" name="contrasenia" required><br>
-            <label for="tipo_usuario">Normal</label>
+            <!--<label for="tipo_usuario">Normal</label>
             <input type="radio" name="tipo_usuario" value="normal" id="tipo_usuario_normal">
             <label for="tipo_usuario">Admin</label>
             <input type="radio" name="tipo_usuario" value="admin" id="tipo_usuario_admin">
+            -->
             <input type="submit" value="Crear Cuenta" class="btn-iniciar-sesion">
         </form>
     </div>
@@ -36,7 +37,7 @@
     ?>
 </body>
 
-<script>
+<!--<script>
     function insertAfter(newNode, existingNode) {
         existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
     }
@@ -80,6 +81,6 @@
             label_admin.remove();
         }
     })
-</script>
+</script>-->
 
 </html>

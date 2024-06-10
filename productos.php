@@ -26,7 +26,7 @@
                 <li class="carrito"><a href="carrito.php" class="carrito">Carrito <i class="fa-solid fa-cart-shopping"></i></a></li>
                 <?php session_start();
                 if (isset($_SESSION['tipo_de_usuario']) && $_SESSION['tipo_de_usuario'] == 1) { ?>
-                    <li class="#administrador"><a href="./administrador/administrador.php">Administradores</a></li>
+                    <li class="#administrador"><a href="./../administrador/administrador.php">Administradores</a></li>
                 <?php }; ?>
             </ul>
         </nav>
@@ -50,7 +50,7 @@
 <script>
     $(document).ready(function() {
         $.ajax({
-            url: "/restful_api/productosajax.php",
+            url: "./../restful_api/productosajax.php",
             type: "get",
             dataType: "json",
             success: function(data) {
@@ -60,20 +60,27 @@
                 wrapper.innerHTML = "";
                 wrapper.classList.add("wrapper_container_productos");
 
-                    for (const prenda of data) {
-                        let prendaHtml = `
+                for (const prenda of data) {
+                    let prendaHtml = `
                     <div class="seccion_container_productos_tarjeta">
-                        <img src="${prenda['imagen']}" alt="Imagen del producto">
+                        <img src="./../img/productos_img/${prenda['imagen']}" alt="Imagen del producto">
                         <h4>${prenda['nombre']}</h4>
                         <p>${prenda['descripcion']}</p>
-                        <p>${prenda['talle']}</p>
-                        <p>${prenda['color']}</p>
-                        <p>${prenda['precio']}</p>
-                        <button type="submit">Agregar al carrito</button>
+                        <p>talle: ${prenda['talle']}</p>
+                        <p>color: ${prenda['color']}</p>
+                        <p>precio: ${prenda['precio']}</p>
+                        <button type="submit" name="btnAgregar"><a href="">Agregar al carrito</a></button>
+                        <?php
+                         if($_SESSION['tipo_de_usuario'] == 1){
+                            echo "<button type='submit' name='btnEditar'><a href=''>Editar Producto</a></button>";
+                            echo "<button type='submit' name='btnEliminar'><a href=''>Eliminar Producto</a></button>";
+                         }
+                         ?>
                     </div>
                     `
-                        wrapper.innerHTML += prendaHtml;
-                    }
+                    wrapper.innerHTML += prendaHtml;
+                }
+
 
                 container_producto[0].appendChild(wrapper);
 

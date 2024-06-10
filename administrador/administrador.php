@@ -26,7 +26,7 @@
                             class="fa-solid fa-cart-shopping"></i></a></li>
                 <?php session_start();
                 if (isset($_SESSION['tipo_de_usuario']) && $_SESSION['tipo_de_usuario'] == 1) { ?>
-                <li class="#administrador"><a href="./administrador/administrador.php">Administradores</a></li>
+                <li class="#administrador"><a href="./../administrador/administrador.php">Administradores</a></li>
                 <?php }; ?>
             </ul>
         </nav>
@@ -94,7 +94,7 @@
                 <label for="marca">Marca</label>
                 <select name="marca" id="productos_marca">
                     <?php
-                    include "./../conexionBD.php";
+                    include "./../Backend/conexionBD.php";
 
                     $consulta = "SELECT nombre, id_marca FROM marca";
 
@@ -133,7 +133,7 @@
                 <div class="preview">
                     <p>No se detectan archivos en el preview</p>
                 </div>
-                <input type="submit" value="Subir nuevo producto">
+                <input type="submit" value="Subir nuevo producto" name="subir">
             </form>
         </div>
     </main>

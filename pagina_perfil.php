@@ -10,7 +10,7 @@
 
 <body>
     <div class="header-inicio">
-        <a href="index.php"><img src="./img/logo-marca.jpg" alt="Logo de la marca"></a>
+        <a href="index.php"><img src="./img/logo-marca-nuevo.jpg" alt="Logo de la marca"></a>
     </div>
     <div class="mi_cuenta">
         <h1>Mi cuenta</h1>
@@ -20,7 +20,7 @@
         echo "<p>{$_SESSION['nombre']} {$_SESSION['apellido']} </p>";
         echo "<p>{$_SESSION['correo']}</p>";
         ?>
-        <button><a href="cerrar_sesion.php" class="cerrar_sesion">CERRAR SESIÓN</a></button>
+        <button><a href="./Backend/cerrar_sesion.php" class="cerrar_sesion">CERRAR SESIÓN</a></button>
     </div>
 </body>
 

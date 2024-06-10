@@ -1,6 +1,6 @@
 <?php
 //hacer con ajax el agregado del producto 
-include './../conexionBD.php';
+include './../Backend/conexionBD.php';
 $consulta = "SELECT * FROM prenda";
 $resultado_produtos = mysqli_query($conexion, $consulta);
 
@@ -33,6 +33,8 @@ while($fila = $resultado_produtos->fetch_assoc()){
 
     array_push($array_productos, $prenda_assoc);
 }
+
+
 
 $array_final = json_encode($array_productos, JSON_UNESCAPED_SLASHES);
 

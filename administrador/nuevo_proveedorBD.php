@@ -1,5 +1,5 @@
 <?php
-include "./../conexionBD.php";
+include "./../Backend/conexionBD.php";
 
 if (isset($_POST["nombre"]) && isset($_POST["telefono"]) && isset($_POST["gmail"])){
 
