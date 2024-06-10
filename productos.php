@@ -71,13 +71,14 @@
                         <p>precio: ${prenda['precio']}</p>
                         <button type="submit" name="btnAgregar"><a href="">Agregar al carrito</a></button>
                         <?php
-                         if($_SESSION['tipo_de_usuario'] == 1){
+                            if($_SESSION['tipo_de_usuario'] == 1){
                             echo "<button type='submit' name='btnEditar'><a href=''>Editar Producto</a></button>";
                             echo "<button type='submit' name='btnEliminar'><a href=''>Eliminar Producto</a></button>";
-                         }
-                         ?>
+                            }
+                        ?>
                     </div>
                     `
+                    //Tenemos que cerrar el php y poner la variable id_prenda con javaScript
                     wrapper.innerHTML += prendaHtml;
                 }
 
