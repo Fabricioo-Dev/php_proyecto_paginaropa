@@ -1,6 +1,8 @@
 <?php 
 include 'conexionBD.php';
 
+
+
 //en esta linea se confirma si se mando el formulario 
 //en esta con strlen se obtiene la longitud de los campos del form y se verifica que se hayan completado
 if (strlen($_POST['nombre']) > 3 && strlen($_POST['apellido']) > 3 && strlen($_POST['email']) > 3 && strlen($_POST['contrasenia']) > 3){

@@ -6,6 +6,8 @@ $resultado_produtos = mysqli_query($conexion, $consulta);
 
 $array_productos = [];
 
+session_start();
+
 while($fila = $resultado_produtos->fetch_assoc()){
     $id_prenda = $fila['id_prenda'];
     $id_marca = $fila['id_marca'];
@@ -15,6 +17,14 @@ while($fila = $resultado_produtos->fetch_assoc()){
     $color = $fila['color'];
     $talle = $fila['talle'];
     $imagen = $fila['imagen'];
+    $isAdmin;
+
+    if($_SESSION['tipo_de_usuario'] == 1){
+        $isAdmin = 1;
+    }
+    else{
+        $isAdmin = 0;
+    }
 
 
     $precio = $fila['precio'];
@@ -28,7 +38,8 @@ while($fila = $resultado_produtos->fetch_assoc()){
         "color" => $color,
         "talle" => $talle,
         "imagen" => $imagen,
-        "precio" => $precio
+        "precio" => $precio,
+        "isAdmin" => $isAdmin
     ];
 
     array_push($array_productos, $prenda_assoc);
