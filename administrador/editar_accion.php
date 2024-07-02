@@ -3,8 +3,6 @@ include "./../Backend/conexionBD.php";
 
 if(isset($_POST['subir'])){ 
 //(isset($_POST["nombre"]) && isset($_POST["descripcion"]) && isset($_POST["talla"]) && isset($_POST["color"]) && isset($_FILES["imagen"]) && isset($_POST["precio"])){
-
-
     $nombre = $_POST["nombre"];
     $descripcion = $_POST["descripcion"];
     $tallas = $_POST["talla"];

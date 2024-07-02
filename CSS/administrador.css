@@ -176,3 +176,19 @@ main {
     justify-content: center;
     align-items: center;
 }
+
+/*----- Editar_Producto -----*/
+
+.editar__prenda form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+.subir__btn {
+    background: #89d6ff;
+}
+.subir__btn:hover{
+    background: #89d6fff5;
+    padding: 0.1rem;
+    border-radius: 1rem;
+}

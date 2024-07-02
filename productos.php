@@ -71,51 +71,39 @@
                         <p>precio: ${prenda['precio']}</p>
                         <button type="submit" name="btnAgregar"><a href="">Agregar al carrito</a></button>
                         <?php
-                            if($_SESSION['tipo_de_usuario'] == 1){
-                                echo "<button type='submit' name='btnEditar'>";
-                            }
+                        if ($_SESSION['tipo_de_usuario'] == 1) {
+                            echo "<button type='submit' name='btnEditar'>";
+                        }
                         ?>
                         ${prenda['isAdmin'] === 1 ? `<a href='./administrador/editar_producto.php?id_prenda=${prenda["id_prenda"]}'>Editar Producto</a>` : "" }
                         <?php
-                            if($_SESSION['tipo_de_usuario'] == 1){
-                                echo "</button>";
-                            }
+                        if ($_SESSION['tipo_de_usuario'] == 1) {
+                            echo "</button>";
+                        }
                         ?>
 
                         <?php
-                            if($_SESSION['tipo_de_usuario'] == 1){
+                        if ($_SESSION['tipo_de_usuario'] == 1) {
                             echo "<button type='submit' name='btnEliminar'>";
-                            }
+                        }
                         ?>
 
                         ${prenda['isAdmin'] === 1 ? `<a href='./administrador/eliminar_producto.php?prenda_id=${prenda["id_prenda"]}'>Eliminar Producto</a>` : "" }
 
                         <?php
-                            if($_SESSION['tipo_de_usuario'] == 1){
-                                echo "</button>";
-                            }
+                        if ($_SESSION['tipo_de_usuario'] == 1) {
+                            echo "</button>";
+                        }
                         ?>
-
-
-
-
                     </div>
                     `
                     //Tenemos que cerrar el php y poner la variable id_prenda con javaScript
                     wrapper.innerHTML += prendaHtml;
-
                 }
-
-
                 container_producto[0].appendChild(wrapper);
-
-
-
             }
         });
     });
 </script>
-
-
 
 </html>

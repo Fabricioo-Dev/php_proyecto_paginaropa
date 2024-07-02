@@ -19,24 +19,16 @@
 
     ?>
     <?php
-        if($_SESSION['tipo_de_usuario'] != 1){
-            header('location:../login.php');
-        }
+    if ($_SESSION['tipo_de_usuario'] != 1) {
+        header('location:../login.php');
+    }
 
-        $consulta = "SELECT * FROM prenda WHERE id_prenda = {$_GET['id_prenda']}";
+    $consulta = "SELECT * FROM prenda WHERE id_prenda = {$_GET['id_prenda']}";
 
-        $resultado = mysqli_query($conexion, $consulta);
-
-
-        $resultado_obtenido = mysqli_fetch_assoc($resultado);
+    $resultado = mysqli_query($conexion, $consulta);
 
 
-
-
-
-
-
-
+    $resultado_obtenido = mysqli_fetch_assoc($resultado);
     ?>
     <header class="header">
         <div class="logo">
@@ -47,7 +39,7 @@
                 <li class="#Nosotros"><a href="./../nosotros.php">Nosotros</a></li>
                 <li class="#Productos"><a href="./../productos.php">Prendas</a></li>
                 <li class="carrito"><a href="./../carrito.php" class="carrito">Carrito <i class="fa-solid fa-cart-shopping"></i></a></li>
-                <?php 
+                <?php
                 if (isset($_SESSION['tipo_de_usuario']) && $_SESSION['tipo_de_usuario'] == 1) { ?>
                     <li class="#administrador"><a href="./../administrador/administrador.php">Administradores</a></li>
                 <?php }; ?>
@@ -62,8 +54,8 @@
         </div>
     </header>
     <main>
-
-            <form action="./editar_accion.php?id_prenda=<?php echo $_GET["id_prenda"]?>" method="post" enctype="multipart/form-data">
+        <div class="editar__prenda">
+            <form action="./editar_accion.php?id_prenda=<?php echo $_GET["id_prenda"] ?>" method="post" enctype="multipart/form-data">
                 <label for="nombre">Prenda</label>
                 <input type="text" name="nombre" required value="<?php echo $resultado_obtenido['nombre'] ?>">
                 <label for="descripcion">Descripcion</label>
@@ -72,8 +64,8 @@
                 </textarea>
                 <label for="talla">Talla</label>
                 <select name="talla" required value=<?php echo $resultado_obtenido['talle'] ?>>
-                    <?php 
-                        echo "<option value={$resultado_obtenido['talle']}>{$resultado_obtenido['talle']}</option>"
+                    <?php
+                    echo "<option value={$resultado_obtenido['talle']}>{$resultado_obtenido['talle']}</option>"
                     ?>
                     <option value="XS">XS</option>
                     <option value="S">S</option>
@@ -96,7 +88,7 @@
 
                     while ($i = $resultado_marca->fetch_assoc()) {
                         echo "<option value='{$i["id_marca"]}'";
-                        if($i["id_marca"] == $resultado_obtenido['id_marca']){
+                        if ($i["id_marca"] == $resultado_obtenido['id_marca']) {
                             echo "selected required";
                         }
                         echo ">{$i["nombre"]} </option>";
@@ -119,7 +111,7 @@
 
                     while ($i = $resultado_proveedor->fetch_assoc()) {
                         echo "<option value='{$i["id_proveedor"]}'";
-                        if($i["id_proveedor"] == $resultado_obtenido['id_proveedor']){
+                        if ($i["id_proveedor"] == $resultado_obtenido['id_proveedor']) {
                             echo "selected required";
                         }
                         echo ">{$i["nombre"]} </option>";
@@ -129,102 +121,97 @@
 
                 </select>
                 <label for="imagen">Imagen</label>
-                <input type="file" name="imagen" accept="image/*" class="nuevo_producto_imagen"
-                    placeholder="Ingresar el archivo de imagen" required>
+                <input type="file" name="imagen" accept="image/*" class="nuevo_producto_imagen" placeholder="Ingresar el archivo de imagen" required>
 
                 <div class="preview">
                     <p>No se detectan archivos en el preview</p>
                 </div>
-                <input type="submit" value="Subir nuevo producto" name="subir">
+                <input type="submit" class="subir__btn" value="Editar producto" name="subir">
             </form>
-
-
-            
+        </div>
     </main>
 
-
-
-
+    <!-----JavaScrip----->
     <script>
-    function setInputFilter(textbox, inputFilter, errMsg) {
-        ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop", "focusout"].forEach(function(
-            event) {
-            textbox.addEventListener(event, function(e) {
-                if (inputFilter(this.value)) {
-                    // Accepted value.
-                    if (["keydown", "mousedown", "focusout"].indexOf(e.type) >= 0) {
-                        this.classList.remove("input-error");
-                        this.setCustomValidity("");
+        function setInputFilter(textbox, inputFilter, errMsg) {
+            ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop", "focusout"].forEach(function(
+                event) {
+                textbox.addEventListener(event, function(e) {
+                    if (inputFilter(this.value)) {
+                        // Accepted value.
+                        if (["keydown", "mousedown", "focusout"].indexOf(e.type) >= 0) {
+                            this.classList.remove("input-error");
+                            this.setCustomValidity("");
+                        }
+
+                        this.oldValue = this.value;
+                        this.oldSelectionStart = this.selectionStart;
+                        this.oldSelectionEnd = this.selectionEnd;
+                    } else if (this.hasOwnProperty("oldValue")) {
+                        // Rejected value: restore the previous one.
+                        this.classList.add("input-error");
+                        this.setCustomValidity(errMsg);
+                        this.reportValidity();
+                        this.value = this.oldValue;
+                        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                    } else {
+                        // Rejected value: nothing to restore.
+                        this.value = "";
+                    }
+                });
+            });
+        }
+
+
+        function updateImageDisplay() {
+            while (preview.firstChild) {
+                preview.removeChild(preview.firstChild);
+            }
+
+            const curFiles = input.files;
+            if (curFiles.length === 0) {
+                const para = document.createElement("p");
+                para.textContent = "No hay imagenes que hayan sido agregadas";
+                preview.appendChild(para);
+            } else {
+                const list = document.createElement("ol");
+                preview.appendChild(list);
+
+                for (const file of curFiles) {
+                    const listItem = document.createElement("li");
+                    const para = document.createElement("p");
+                    if (file) {
+                        para.textContent = `Nombre archivo ${file.name}, Tamaño archivo ${file.size}.`;
+                        const image = document.createElement("img");
+                        image.src = URL.createObjectURL(file);
+                        image.alt = image.title = file.name;
+
+                        listItem.appendChild(image);
+                        listItem.appendChild(para);
+                    } else {
+                        para.textContent =
+                            `Nombre archivo ${file.name}: No es un tipo válido de archivo. Actualiza tu seleccion de archivo.`;
+                        listItem.appendChild(para);
                     }
 
-                    this.oldValue = this.value;
-                    this.oldSelectionStart = this.selectionStart;
-                    this.oldSelectionEnd = this.selectionEnd;
-                } else if (this.hasOwnProperty("oldValue")) {
-                    // Rejected value: restore the previous one.
-                    this.classList.add("input-error");
-                    this.setCustomValidity(errMsg);
-                    this.reportValidity();
-                    this.value = this.oldValue;
-                    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-                } else {
-                    // Rejected value: nothing to restore.
-                    this.value = "";
+                    list.appendChild(listItem);
                 }
-            });
-        });
-    }
-
-
-    function updateImageDisplay() {
-        while (preview.firstChild) {
-            preview.removeChild(preview.firstChild);
-        }
-
-        const curFiles = input.files;
-        if (curFiles.length === 0) {
-            const para = document.createElement("p");
-            para.textContent = "No hay imagenes que hayan sido agregadas";
-            preview.appendChild(para);
-        } else {
-            const list = document.createElement("ol");
-            preview.appendChild(list);
-
-            for (const file of curFiles) {
-                const listItem = document.createElement("li");
-                const para = document.createElement("p");
-                if (file) {
-                    para.textContent = `Nombre archivo ${file.name}, Tamaño archivo ${file.size}.`;
-                    const image = document.createElement("img");
-                    image.src = URL.createObjectURL(file);
-                    image.alt = image.title = file.name;
-
-                    listItem.appendChild(image);
-                    listItem.appendChild(para);
-                } else {
-                    para.textContent =
-                        `Nombre archivo ${file.name}: No es un tipo válido de archivo. Actualiza tu seleccion de archivo.`;
-                    listItem.appendChild(para);
-                }
-
-                list.appendChild(listItem);
             }
         }
-    }
 
 
 
 
-    setInputFilter(document.getElementById("nuevo_producto_precio"), function(value) {
-        return /^\d*\.?\d*$/.test(value); // Permite solo valores digitos (numericos)
-    }, "Solo valores numericos se pueden añadir");
+        setInputFilter(document.getElementById("nuevo_producto_precio"), function(value) {
+            return /^\d*\.?\d*$/.test(value); // Permite solo valores digitos (numericos)
+        }, "Solo valores numericos se pueden añadir");
 
 
 
-    const input = document.querySelector(".nuevo_producto_imagen");
-    const preview = document.querySelector(".preview");
+        const input = document.querySelector(".nuevo_producto_imagen");
+        const preview = document.querySelector(".preview");
 
-    input.addEventListener("change", updateImageDisplay);
+        input.addEventListener("change", updateImageDisplay);
     </script>
 
 
