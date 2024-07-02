@@ -25,6 +25,12 @@
                 <li class="carrito"><a href="./../carrito.php" class="carrito">Carrito <i
                             class="fa-solid fa-cart-shopping"></i></a></li>
                 <?php session_start();
+
+                if ($_SESSION['tipo_de_usuario'] != 1) {
+                    header('location:../login.php');
+                }
+
+
                 if (isset($_SESSION['tipo_de_usuario']) && $_SESSION['tipo_de_usuario'] == 1) { ?>
                 <li class="#administrador"><a href="./../administrador/administrador.php">Administradores</a></li>
                 <?php }; ?>

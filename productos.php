@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="./CSS/productos.css">
 </head>
 
+
+<?php session_start(); ?>
 <body>
     <header class="header">
         <div class="logo">
@@ -23,8 +25,8 @@
             <ul>
                 <li class="#Nosotros"><a href="nosotros.php">Nosotros</a></li>
                 <li class="#Productos"><a href="productos.php">Prendas</a></li>
-                <li class="carrito"><a href="carrito.php" class="carrito">Carrito <i class="fa-solid fa-cart-shopping"></i></a></li>
-                <?php session_start();
+                <li class="carrito"><a href="carrito.php" class="carrito">Carrito <i class="fa-solid fa-cart-shopping"></i> <span class="carrito-contador"> <?php echo isset($_SESSION["carrito"]) ? count($_SESSION["carrito"]) :  0; ?> </span> </a></li>
+                <?php
                 if (isset($_SESSION['tipo_de_usuario']) && $_SESSION['tipo_de_usuario'] == 1) { ?>
                     <li class="#administrador"><a href="./administrador/administrador.php">Administradores</a></li>
                 <?php }; ?>
@@ -48,6 +50,8 @@
 </body>
 
 <script>
+    let contador = <?php echo isset($_SESSION["carrito"]) ? count($_SESSION["carrito"]) : 0; ?>;
+    console.log("La variable contador tiene " + contador);
     $(document).ready(function() {
         $.ajax({
             url: "./restful_api/productosajax.php",
@@ -69,7 +73,7 @@
                         <p>talle: ${prenda['talle']}</p>
                         <p>color: ${prenda['color']}</p>
                         <p>precio: ${prenda['precio']}</p>
-                        <button type="submit" name="btnAgregar"><a href="">Agregar al carrito</a></button>
+                        <button type="submit" name="btnAgregar" data-id="${prenda['id_prenda']}"><a>Agregar al carrito</a></button>
                         <?php
                         if ($_SESSION['tipo_de_usuario'] == 1) {
                             echo "<button type='submit' name='btnEditar'>";
@@ -101,6 +105,23 @@
                     wrapper.innerHTML += prendaHtml;
                 }
                 container_producto[0].appendChild(wrapper);
+                let botones = document.querySelectorAll('button[name="btnAgregar"]');
+                console.log(botones);
+                botones.forEach(function (boton) {
+                    boton.addEventListener('click', (e) => {
+                        let idPrenda = e.target.getAttribute('data-id');
+                        console.log(idPrenda);
+                        $.ajax({
+                            url: './restful_api/agregarcarrito.php',
+                            type: 'POST',
+                            data: { id: idPrenda },
+                            success: function(response) {
+                                contador++;
+                                document.querySelector('.carrito-contador').textContent = contador;
+                            }
+                        });
+                    })
+                })
             }
         });
     });

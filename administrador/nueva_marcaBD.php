@@ -1,6 +1,12 @@
 <?php
 include "./../Backend/conexionBD.php";
 
+
+php session_start();
+if ($_SESSION['tipo_de_usuario'] != 1) {
+    header('location:../login.php');
+}
+
 if (isset($_POST["nombre"]) && isset($_POST["descripcion"])) {
 
     $nombre = $_POST["nombre"];

@@ -37,6 +37,18 @@
     </header>
     <main class="seccion_carrito">
         <h1>Bienvenido al carrito de productos</h1>
+        <?php
+
+        echo var_dump($_SESSION['carrito']);
+        echo $_SESSION['carrito'][0];
+
+        foreach ($_SESSION['carrito'] as $v) {
+            echo $v;
+        }
+
+
+
+         ?>
     </main>
 </body>
 
