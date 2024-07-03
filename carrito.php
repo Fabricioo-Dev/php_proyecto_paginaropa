@@ -40,15 +40,45 @@
         <?php
 
         echo var_dump($_SESSION['carrito']);
-        echo $_SESSION['carrito'][0];
 
-        foreach ($_SESSION['carrito'] as $v) {
-            echo $v;
+        include './Backend/conexionBD.php';
+
+        $stringIds = "";
+
+        for($i=0;$i<count($_SESSION['carrito']);$i++){
+            if($i == 0){
+                $stringIds = $stringIds."(";
+                $stringIds = $stringIds.$_SESSION['carrito'][$i]['id'].",";
+            }
+            if($i != 0 && ($i+1) != count($_SESSION['carrito']) ){
+                $stringIds = $stringIds.$_SESSION['carrito'][$i]['id'].",";
+            }
+
+            if(($i+1) == count($_SESSION['carrito'])){
+                $stringIds = $stringIds . $_SESSION['carrito'][$i]['id'];
+                $stringIds = $stringIds.")";
+            }
+        }
+
+        echo $stringIds;
+
+        $consulta = "SELECT * FROM prenda WHERE id_prenda IN ".$stringIds.";";
+
+        echo $consulta;
+
+
+        $resultado_carrito = mysqli_query($conexion, $consulta);
+
+        while ($i = $resultado_carrito->fetch_assoc()) {
+            echo "<p value='{$i["id_prenda"]}'> {$i["nombre"]} </p>";
         }
 
 
+        
 
-         ?>
+
+
+        ?>
     </main>
 </body>
 

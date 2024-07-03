@@ -73,6 +73,7 @@
                         <p>talle: ${prenda['talle']}</p>
                         <p>color: ${prenda['color']}</p>
                         <p>precio: ${prenda['precio']}</p>
+                        <input id="number" type="number" placeholder="cantidad" required />
                         <button type="submit" name="btnAgregar" data-id="${prenda['id_prenda']}"><a>Agregar al carrito</a></button>
                         <?php
                         if ($_SESSION['tipo_de_usuario'] == 1) {
@@ -109,15 +110,19 @@
                 console.log(botones);
                 botones.forEach(function (boton) {
                     boton.addEventListener('click', (e) => {
-                        let idPrenda = e.target.getAttribute('data-id');
-                        console.log(idPrenda);
+                        let idPrenda = e.target.parentNode.getAttribute('data-id');
+                        let cantidadPrenda = e.target.parentNode.previousElementSibling.value;
+                        console.log("La cantidad de prendas es " + cantidadPrenda);
+                        console.log("El valor de id prenda es " + idPrenda);
                         $.ajax({
                             url: './restful_api/agregarcarrito.php',
                             type: 'POST',
-                            data: { id: idPrenda },
+                            data: { id: idPrenda, cantidad: cantidadPrenda },
                             success: function(response) {
-                                contador++;
-                                document.querySelector('.carrito-contador').textContent = contador;
+                                if(cantidadPrenda > 0){
+                                    contador++;
+                                    document.querySelector('.carrito-contador').textContent = contador;
+                                }
                             }
                         });
                     })

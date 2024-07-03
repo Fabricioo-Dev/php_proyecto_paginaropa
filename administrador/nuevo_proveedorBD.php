@@ -1,7 +1,7 @@
 <?php
 include "./../Backend/conexionBD.php";
 
-php session_start();
+session_start();
 
 if ($_SESSION['tipo_de_usuario'] != 1) {
     header('location:../login.php');
