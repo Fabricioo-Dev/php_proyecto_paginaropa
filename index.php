@@ -105,6 +105,3 @@
 </body>
 
 </html>
-<!--se puede usar boostrap pero saber las funcionalidades de este, no hace falta que sea responsive la pagina
-en el front mostrar los datos que ven los usuarios
-# La base de datos no tiene que tener datos repetidos(hacer que los imput no tomen datos iguales de un mismo usuario)-->

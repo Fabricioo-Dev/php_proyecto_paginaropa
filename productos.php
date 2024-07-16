@@ -112,8 +112,6 @@
                     boton.addEventListener('click', (e) => {
                         let idPrenda = e.target.parentNode.getAttribute('data-id');
                         let cantidadPrenda = e.target.parentNode.previousElementSibling.value;
-                        console.log("La cantidad de prendas es " + cantidadPrenda);
-                        console.log("El valor de id prenda es " + idPrenda);
                         $.ajax({
                             url: './restful_api/agregarcarrito.php',
                             type: 'POST',
