@@ -20,13 +20,22 @@
             <ul>
                 <li class="#Nosotros"><a href="nosotros.php">Nosotros</a></li>
                 <li class="#Productos"><a href="productos.php">Prendas</a></li>
-                <li class="carrito"><a href="carrito.php" class="carrito">Carrito <i class="fa-solid fa-cart-shopping"></i></a></li>
-                <?php session_start();
+                <?php session_start(); ?>
+                <li class="carrito">
+                    <a href="carrito.php" class="carrito">
+                        Carrito <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="carrito-contador">
+                            <?php echo isset($_SESSION["carrito"]) ? count($_SESSION["carrito"]) : 0; ?>
+                        </span>
+                    </a>
+                </li>
+                <?php
                 if (isset($_SESSION['tipo_de_usuario']) && $_SESSION['tipo_de_usuario'] == 1) { ?>
                     <li class="#administrador"><a href="./administrador/administrador.php">Administradores</a></li>
                 <?php }; ?>
             </ul>
         </nav>
+
         <div class="ingreso">
             <?php if (isset($_SESSION['nombre'])) { ?>
                 <a href="pagina_perfil.php" class="registrar"><button>Mi Cuenta <i class="fa-solid fa-user"></i></button></a>
@@ -36,49 +45,61 @@
         </div>
     </header>
     <main class="seccion_carrito">
-        <h1>Bienvenido al carrito de productos</h1>
         <?php
+        if (isset($_SESSION['carrito']) && $_SESSION['carrito']) {
+            //echo var_dump($_SESSION['carrito']);
 
-        echo var_dump($_SESSION['carrito']);
+            include './Backend/conexionBD.php';
 
-        include './Backend/conexionBD.php';
+            $stringIds = "";
 
-        $stringIds = "";
+            for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
+                if ($i == 0) {
+                    $stringIds = $stringIds . "(";
+                    $stringIds = $stringIds . $_SESSION['carrito'][$i]['id'] . ",";
+                }
+                if ($i != 0 && ($i + 1) != count($_SESSION['carrito'])) {
+                    $stringIds = $stringIds . $_SESSION['carrito'][$i]['id'] . ",";
+                }
 
-        for($i=0;$i<count($_SESSION['carrito']);$i++){
-            if($i == 0){
-                $stringIds = $stringIds."(";
-                $stringIds = $stringIds.$_SESSION['carrito'][$i]['id'].",";
+                if (($i + 1) == count($_SESSION['carrito'])) {
+                    $stringIds = $stringIds . $_SESSION['carrito'][$i]['id'];
+                    $stringIds = $stringIds . ")";
+                }
             }
-            if($i != 0 && ($i+1) != count($_SESSION['carrito']) ){
-                $stringIds = $stringIds.$_SESSION['carrito'][$i]['id'].",";
+
+            $consulta = "SELECT * FROM prenda WHERE id_prenda IN " . $stringIds . ";";
+
+            $resultado_carrito = mysqli_query($conexion, $consulta);
+
+            echo "<div class='carrito-contenedor'>";
+
+            $total = 0;
+            while ($i = $resultado_carrito->fetch_assoc()) {
+                $total += $i["precio"];
+                echo "
+        <div class='producto-contenido'>
+            <h2>{$i["nombre"]}</h2>
+            <p>Descripción: {$i["descripcion"]}</p>
+            <p>Color: {$i["color"]}</p>
+            <p>Talle: {$i["talle"]}</p>
+            <p>Precio: \${$i["precio"]}</p>
+            <button class='btn-eliminar'>Eliminar</button>
+        </div>
+        ";
             }
-
-            if(($i+1) == count($_SESSION['carrito'])){
-                $stringIds = $stringIds . $_SESSION['carrito'][$i]['id'];
-                $stringIds = $stringIds.")";
-            }
-        }
-
-        echo $stringIds;
-
-        $consulta = "SELECT * FROM prenda WHERE id_prenda IN ".$stringIds.";";
-
-        echo $consulta;
-
-
-        $resultado_carrito = mysqli_query($conexion, $consulta);
-
-        while ($i = $resultado_carrito->fetch_assoc()) {
-            echo "<p value='{$i["id_prenda"]}'> {$i["nombre"]} </p>";
-        }
-
-
-        
-
-
-
         ?>
+            <div class="carrito-total">
+                <p>Total: $<?php echo $total; ?></p>
+                <button class="btn-compra">Hacer Compra</button>
+            </div>
+            </div>
+        <?php
+        } else {
+            echo "<p>No hay producto Cargado</p>";
+        }
+        ?>
+
     </main>
 </body>
 

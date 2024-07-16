@@ -18,15 +18,24 @@
         </div>
         <nav>
             <ul>
-                <li class="#Nosotros"><a href="productos.php">Nosotros</a></li>
+                <li class="#Nosotros"><a href="nosotros.php">Nosotros</a></li>
                 <li class="#Productos"><a href="productos.php">Prendas</a></li>
-                <li class="carrito"><a href="carrito.php" class="carrito">Carrito <i class="fa-solid fa-cart-shopping"></i></a></li>
-                <?php session_start();
+                <?php session_start(); ?>
+                <li class="carrito">
+                    <a href="carrito.php" class="carrito">
+                        Carrito <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="carrito-contador">
+                            <?php echo isset($_SESSION["carrito"]) ? count($_SESSION["carrito"]) : 0; ?>
+                        </span>
+                    </a>
+                </li>
+                <?php
                 if (isset($_SESSION['tipo_de_usuario']) && $_SESSION['tipo_de_usuario'] == 1) { ?>
                     <li class="#administrador"><a href="./administrador/administrador.php">Administradores</a></li>
                 <?php }; ?>
             </ul>
         </nav>
+
         <div class="ingreso">
             <?php
             if (isset($_SESSION['nombre'])) { ?>

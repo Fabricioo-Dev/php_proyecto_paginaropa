@@ -1,4 +1,4 @@
-/*--- Estilos para el NAV ---*/
+/* Estilos globales para el NAV */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 * {
@@ -14,7 +14,8 @@ a {
 }
 
 body {
-    background-color: #ffffff;
+    background-color: #f4f4f9;
+    margin: 0;
 }
 
 header {
@@ -22,7 +23,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 85px;
+    height: 4.5rem;
     padding: 5px 10%;
     color: #89d6ff;
 }
@@ -90,4 +91,88 @@ header {
     transform: scale(1);
 }
 
-/*-- FIN estilos NAV --*/
+/* Estilos para el main */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: calc(100vh - 4.5rem);
+    /* Ajustamos la altura restando la altura del header */
+    width: 100%;
+    overflow-y: auto;
+}
+
+.carrito-contenedor {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 50rem;
+    width: 80%;
+    margin-top: 2rem;
+}
+
+.producto-contenido {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.producto-contenido h2 {
+    margin: 0;
+    text-align: center;
+    color: #333;
+}
+
+.producto-contenido p {
+    margin: 0.2rem 0;
+    color: #666;
+}
+
+.btn-eliminar {
+    background-color: #e63946;
+    color: #ffffff;
+    border: none;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center;
+}
+
+.btn-eliminar:hover {
+    background-color: #d62839;
+}
+
+.carrito-total {
+    text-align: right;
+    margin-top: 2rem;
+}
+
+.carrito-total p {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+}
+
+.btn-compra {
+    background-color: #38b000;
+    color: #ffffff;
+    border: none;
+    margin-top: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+}
+
+.btn-compra:hover {
+    background-color: #32a600;
+}
