@@ -11,7 +11,7 @@ if(isset($_POST['subir'])){
     $color = $_POST["color"];
     $id_proveedor = $_POST["proveedor"];
     $id_marca = $_POST["marca"];
-    $imagen = $_FILES['imagen']['name']; //se usa FILES en vez de POST ya que es un archivo lo que se guarda
+    $imagen = $_FILES['imagen']['name'].rand(1,1000); //se usa FILES en vez de POST ya que es un archivo lo que se guarda
     $imagen_tmp = $_FILES['imagen']['tmp_name']; // Obtener la ubicación temporal del archivo
     $precio = $_POST["precio"];
 

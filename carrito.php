@@ -12,15 +12,40 @@
 </head>
 
 <body>
+    <?php session_start(); ?>
     <header class="header">
         <div class="logo">
             <a href="/index.php"><img src="./img/logo-marca-nuevo.jpg" alt="Logo de la marca"></a>
         </div>
         <nav>
+
+            <?php 
+
+            $eliminar = "";
+
+            if(isset($_GET["eliminar"])){
+                $eliminar = $_GET['eliminar'];
+            }
+
+
+            if(isset($eliminar)){
+                for($i=0;$i<count($_SESSION["carrito"]);$i++){
+                    
+                    if($_SESSION["carrito"][$i]["id"] == $eliminar && (count($_SESSION["carrito"]) == 1 || $i == 0) ){
+                        array_shift($_SESSION["carrito"]);
+                    } else{
+                        if($_SESSION["carrito"][$i]["id"] == $eliminar){
+                            array_splice($_SESSION["carrito"],$i,$i);
+                        }
+                    }
+                }
+            }
+            
+            ?>
             <ul>
                 <li class="#Nosotros"><a href="nosotros.php">Nosotros</a></li>
                 <li class="#Productos"><a href="productos.php">Prendas</a></li>
-                <?php session_start(); ?>
+                
                 <li class="carrito">
                     <a href="carrito.php" class="carrito">
                         Carrito <i class="fa-solid fa-cart-shopping"></i>
@@ -29,6 +54,8 @@
                         </span>
                     </a>
                 </li>
+
+                
                 <?php
                 if (isset($_SESSION['tipo_de_usuario']) && $_SESSION['tipo_de_usuario'] == 1) { ?>
                     <li class="#administrador"><a href="./administrador/administrador.php">Administradores</a></li>
@@ -94,7 +121,7 @@
                     <p>Talle: {$i["talle"]}</p>
                     <p>Precio: \${$i["precio"]}</p>
                     <p>Cantidad: {$cantidad} </p>
-                    <button class='btn-eliminar'>Eliminar</button>
+                    <button class='btn-eliminar'><a href='./carrito.php?eliminar={$i['id_prenda']}'>Eliminar</a></button>
                 </div>
                 ";
 
