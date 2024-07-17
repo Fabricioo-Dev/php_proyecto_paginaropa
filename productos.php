@@ -57,12 +57,20 @@
             url: "./restful_api/productosajax.php",
             type: "get",
             dataType: "json",
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            },
             success: function(data) {
 
                 let container_producto = document.getElementsByClassName("seccion_container_productos");
                 let wrapper = document.createElement("div");
                 wrapper.innerHTML = "";
                 wrapper.classList.add("wrapper_container_productos");
+
+                console.log("Hola entre a este bucle ajax");
+
+                console.log(data);
 
                 for (const prenda of data) {
                     let prendaHtml = `
@@ -73,35 +81,61 @@
                         <p>talle: ${prenda['talle']}</p>
                         <p>color: ${prenda['color']}</p>
                         <p>precio: ${prenda['precio']}</p>
-                        <input id="number" type="number" placeholder="cantidad" required />
-                        <button type="submit" name="btnAgregar" data-id="${prenda['id_prenda']}"><a>Agregar al carrito</a></button>
+
+                        ${prenda['isAdmin'] !== 2 ? `<input id="number" type="number" placeholder="cantidad" required />` : ""}
+                        
+
+                        ${prenda['isAdmin'] !== 2 ? `<button type="submit" name="btnAgregar" data-id="${prenda['id_prenda']}"><a>Agregar al carrito</a></button>` : ""}
+                        
                         <?php
-                        if ($_SESSION['tipo_de_usuario'] == 1) {
+
+                        if(isset($_SESSION['tipo_de_usuario'])){
+                            if ($_SESSION['tipo_de_usuario'] == 1) {
                             echo "<button type='submit' name='btnEditar'>";
+                            }
                         }
+
+                        
                         ?>
                         ${prenda['isAdmin'] === 1 ? `<a href='./administrador/editar_producto.php?id_prenda=${prenda["id_prenda"]}'>Editar Producto</a>` : "" }
                         <?php
-                        if ($_SESSION['tipo_de_usuario'] == 1) {
+
+                        if(isset($_SESSION['tipo_de_usuario'])){
+                            if ($_SESSION['tipo_de_usuario'] == 1) {
                             echo "</button>";
+                            }
                         }
+
+                        
                         ?>
 
                         <?php
-                        if ($_SESSION['tipo_de_usuario'] == 1) {
-                            echo "<button type='submit' name='btnEliminar'>";
+
+                        if(isset($_SESSION['tipo_de_usuario'])){
+                            if ($_SESSION['tipo_de_usuario'] == 1) {
+                                echo "<button type='submit' name='btnEliminar'>";
+                            }
                         }
+
                         ?>
 
                         ${prenda['isAdmin'] === 1 ? `<a href='./administrador/eliminar_producto.php?prenda_id=${prenda["id_prenda"]}'>Eliminar Producto</a>` : "" }
 
                         <?php
-                        if ($_SESSION['tipo_de_usuario'] == 1) {
-                            echo "</button>";
+
+                        if(isset($_SESSION['tipo_de_usuario'])){
+                            if ($_SESSION['tipo_de_usuario'] == 1) {
+                                echo "</button>";
+                            }
                         }
+
+
+
+
+
                         ?>
                     </div>
-                    `
+                    `;
                     //Tenemos que cerrar el php y poner la variable id_prenda con javaScript
                     wrapper.innerHTML += prendaHtml;
                 }

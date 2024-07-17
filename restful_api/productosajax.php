@@ -19,12 +19,20 @@ while($fila = $resultado_produtos->fetch_assoc()){
     $imagen = $fila['imagen'];
     $isAdmin;
 
-    if($_SESSION['tipo_de_usuario'] == 1){
-        $isAdmin = 1;
+
+    if(isset($_SESSION['tipo_de_usuario'])){
+        if($_SESSION['tipo_de_usuario'] == 1){
+            $isAdmin = 1;
+        }
+        else{
+            $isAdmin = 0;
+        }
     }
     else{
-        $isAdmin = 0;
+        $isAdmin = 2;
     }
+
+    
 
 
     $precio = $fila['precio'];

@@ -76,17 +76,29 @@
 
             $total = 0;
             while ($i = $resultado_carrito->fetch_assoc()) {
-                $total += $i["precio"];
+                
+
+                $cantidad; 
+
+                for($j=0;$j<count($_SESSION['carrito']);$j++){
+                    if($i['id_prenda'] == $_SESSION['carrito'][$j]['id']){
+                        $cantidad = $_SESSION['carrito'][$j]['cantidad'];
+                    }
+                }
+
                 echo "
-        <div class='producto-contenido'>
-            <h2>{$i["nombre"]}</h2>
-            <p>Descripción: {$i["descripcion"]}</p>
-            <p>Color: {$i["color"]}</p>
-            <p>Talle: {$i["talle"]}</p>
-            <p>Precio: \${$i["precio"]}</p>
-            <button class='btn-eliminar'>Eliminar</button>
-        </div>
-        ";
+                <div class='producto-contenido'>
+                    <h2>{$i["nombre"]}</h2>
+                    <p>Descripción: {$i["descripcion"]}</p>
+                    <p>Color: {$i["color"]}</p>
+                    <p>Talle: {$i["talle"]}</p>
+                    <p>Precio: \${$i["precio"]}</p>
+                    <p>Cantidad: {$cantidad} </p>
+                    <button class='btn-eliminar'>Eliminar</button>
+                </div>
+                ";
+
+                $total += $i["precio"] * $cantidad;
             }
         ?>
             <div class="carrito-total">
