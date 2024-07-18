@@ -10,7 +10,7 @@
 
 <body>
     <div class="header-inicio">
-        <a href="index.php"><img src="./img/logo-marca.jpg" alt="Logo de la marca"></a>
+        <a href="./index.php"><img src="./img/logo-marca.jpg" alt="Logo de la marca"></a>
     </div>
     <div class="ingreso">
         <form action="Backend/verificar_login.php" method="post">

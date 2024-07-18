@@ -10,15 +10,20 @@ if (isset($_POST['hacer_compra'])) {
     $total = 0;
     $fechaCompra = date('Y-m-d H:i:s');
 
+
+    $dia = date("Ymd");
+    $valuerandom = strtoupper(substr(uniqid(sha1(time())),0,4));
+    $valororden = $dia.$valuerandom;
+
     $insercionesExitosas = true;
 
     // Recorrer el carrito y preparar los datos para la inserción
     foreach ($_SESSION['carrito'] as $item) {
         $prendaId = $item['id'];
         $cantidad = $item['cantidad'];
-        $total += $item['precio'] * $cantidad;
+        
 
-        $consulta = "INSERT INTO carrito (id_usuario, id_prenda, cantidad, fecha, total_a_pagar) VALUES ($usuarioId, $prendaId, $cantidad, '$fechaCompra', $total)";
+        $consulta = "INSERT INTO carrito (id_usuario, id_prenda, cantidad,id_orden) VALUES ($usuarioId, $prendaId, $cantidad,'$valororden')";
         $resultado = mysqli_query($conexion, $consulta);
 
         if (!$resultado) {
@@ -33,10 +38,10 @@ if (isset($_POST['hacer_compra'])) {
         // Vaciar el carrito
         $_SESSION['carrito'] = [];
         // Redirigir de vuelta al carrito con un mensaje de éxito
-        header("Location: /carrito.php?compra=exitosa");
+        header("Location: ./../carrito.php?compra=exitosa");
     } else {
         // Manejar el error, redirigir con un mensaje de error o mostrar un mensaje
-        header("Location: /carrito.php?compra=fallida");
+        header("Location: ./../carrito.php?compra=fallida");
     }
 
     exit();

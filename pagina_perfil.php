@@ -10,7 +10,7 @@
 
 <body>
     <div class="header-inicio">
-        <a href="index.php"><img src="./img/logo-marca-nuevo.jpg" alt="Logo de la marca"></a>
+        <a href="./index.php"><img src="./img/logo-marca-nuevo.jpg" alt="Logo de la marca"></a>
     </div>
     <div class="mi_cuenta">
         <h1>Mi cuenta</h1>

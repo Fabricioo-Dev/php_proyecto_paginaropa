@@ -15,7 +15,7 @@
     <?php session_start(); ?>
     <header class="header">
         <div class="logo">
-            <a href="/index.php"><img src="./img/logo-marca-nuevo.jpg" alt="Logo de la marca"></a>
+            <a href="./index.php"><img src="./img/logo-marca-nuevo.jpg" alt="Logo de la marca"></a>
         </div>
         <nav>
 
@@ -128,9 +128,10 @@
             <form method="post" action="./Backend/compra_carrito.php">
                 <div class="carrito-total">
                     <p>Total: $<?php echo $total; ?></p>
-                    <button type="submit" name="hacer_compra" class="btn-compra">Hacer Compra</button>
+                    
                 </div>
-                </div>
+                <button type="submit" name="hacer_compra" class="btn-compra">Hacer Compra</button>
+                
             </form>
 
         <?php

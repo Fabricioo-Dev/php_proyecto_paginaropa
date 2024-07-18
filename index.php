@@ -25,7 +25,7 @@
     <!--Include me sirve para hacer funciones con php y sql para poder usarlas en cualquier parte del codigo-->
     <header class="header">
         <div class="logo">
-            <a href="/index.php"><img src="./img/logo-marca-nuevo.jpg" alt="Logo de la marca"></a>
+            <a href="./index.php"><img src="./img/logo-marca-nuevo.jpg" alt="Logo de la marca"></a>
         </div>
         <nav>
             <ul>
