@@ -19,33 +19,32 @@
         </div>
         <nav>
 
-            <?php 
+            <?php
 
             $eliminar = "";
 
-            if(isset($_GET["eliminar"])){
+            if (isset($_GET["eliminar"])) {
                 $eliminar = $_GET['eliminar'];
-            }
 
+                if (isset($eliminar)) {
+                    for ($i = 0; $i < count($_SESSION["carrito"]); $i++) {
 
-            if(isset($eliminar)){
-                for($i=0;$i<count($_SESSION["carrito"]);$i++){
-                    
-                    if($_SESSION["carrito"][$i]["id"] == $eliminar && (count($_SESSION["carrito"]) == 1 || $i == 0) ){
-                        array_shift($_SESSION["carrito"]);
-                    } else{
-                        if($_SESSION["carrito"][$i]["id"] == $eliminar){
-                            array_splice($_SESSION["carrito"],$i,$i);
+                        if ($_SESSION["carrito"][$i]["id"] == $eliminar && (count($_SESSION["carrito"]) == 1 || $i == 0)) {
+                            array_shift($_SESSION["carrito"]);
+                        } else {
+                            if ($_SESSION["carrito"][$i]["id"] == $eliminar) {
+                                array_splice($_SESSION["carrito"], $i, $i);
+                            }
                         }
                     }
                 }
             }
-            
+
             ?>
             <ul>
                 <li class="#Nosotros"><a href="nosotros.php">Nosotros</a></li>
                 <li class="#Productos"><a href="productos.php">Prendas</a></li>
-                
+
                 <li class="carrito">
                     <a href="carrito.php" class="carrito">
                         Carrito <i class="fa-solid fa-cart-shopping"></i>
@@ -55,7 +54,6 @@
                     </a>
                 </li>
 
-                
                 <?php
                 if (isset($_SESSION['tipo_de_usuario']) && $_SESSION['tipo_de_usuario'] == 1) { ?>
                     <li class="#administrador"><a href="./administrador/administrador.php">Administradores</a></li>
@@ -77,7 +75,6 @@
             //echo var_dump($_SESSION['carrito']);
 
             include './Backend/conexionBD.php';
-
             $stringIds = "";
 
             for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
@@ -103,12 +100,12 @@
 
             $total = 0;
             while ($i = $resultado_carrito->fetch_assoc()) {
-                
 
-                $cantidad; 
 
-                for($j=0;$j<count($_SESSION['carrito']);$j++){
-                    if($i['id_prenda'] == $_SESSION['carrito'][$j]['id']){
+                $cantidad;
+
+                for ($j = 0; $j < count($_SESSION['carrito']); $j++) {
+                    if ($i['id_prenda'] == $_SESSION['carrito'][$j]['id']) {
                         $cantidad = $_SESSION['carrito'][$j]['cantidad'];
                     }
                 }
@@ -128,12 +125,17 @@
                 $total += $i["precio"] * $cantidad;
             }
         ?>
-            <div class="carrito-total">
-                <p>Total: $<?php echo $total; ?></p>
-                <button class="btn-compra">Hacer Compra</button>
-            </div>
-            </div>
+            <form method="post" action="./Backend/compra_carrito.php">
+                <div class="carrito-total">
+                    <p>Total: $<?php echo $total; ?></p>
+                    <button type="submit" name="hacer_compra" class="btn-compra">Hacer Compra</button>
+                </div>
+                </div>
+            </form>
+
         <?php
+        } else  if (isset($_GET['compra']) && $_GET['compra'] == 'exitosa') {
+            echo "<p>Compra realizada con éxito. El carrito está vacío.</p>";
         } else {
             echo "<p>No hay producto Cargado</p>";
         }
