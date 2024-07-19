@@ -2,8 +2,6 @@
 include "./../Backend/conexionBD.php";
 
 if(isset($_POST['subir'])){ 
-//(isset($_POST["nombre"]) && isset($_POST["descripcion"]) && isset($_POST["talla"]) && isset($_POST["color"]) && isset($_FILES["imagen"]) && isset($_POST["precio"])){
-
 
     $nombre = $_POST["nombre"];
     $descripcion = $_POST["descripcion"];
@@ -13,6 +11,7 @@ if(isset($_POST['subir'])){
     $id_marca = $_POST["marca"];
     $imagen = $_FILES['imagen']['name'].rand(1,1000); //se usa FILES en vez de POST ya que es un archivo lo que se guarda
     $imagen_tmp = $_FILES['imagen']['tmp_name']; // Obtener la ubicación temporal del archivo
+    $cantidad = $_POST["cantidad"];
     $precio = $_POST["precio"];
 
     // Mover el archivo de imagen al directorio deseado
@@ -24,7 +23,7 @@ if(isset($_POST['subir'])){
 
         if(isset($id_marca) && isset($id_proveedor)){
 
-            $consulta = "INSERT INTO prenda(nombre, descripcion, color, talle, imagen, precio, id_proveedor,id_marca) VALUES ('$nombre', '$descripcion', '$color', '$tallas', '$imagen', '$precio', '$id_proveedor', '$id_marca')";
+            $consulta = "INSERT INTO prenda(nombre, descripcion, color, talle, imagen, precio, cantidad, id_proveedor,id_marca) VALUES ('$nombre', '$descripcion', '$color', '$tallas', '$imagen', '$precio','$cantidad', '$id_proveedor', '$id_marca')";
 
             $resultado = mysqli_query($conexion, $consulta);
         } 

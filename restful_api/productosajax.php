@@ -17,6 +17,7 @@ while($fila = $resultado_produtos->fetch_assoc()){
     $color = $fila['color'];
     $talle = $fila['talle'];
     $imagen = $fila['imagen'];
+    $cantidad = $fila['cantidad'];
     $isAdmin;
 
 
@@ -46,6 +47,7 @@ while($fila = $resultado_produtos->fetch_assoc()){
         "color" => $color,
         "talle" => $talle,
         "imagen" => $imagen,
+        "cantidad" => $cantidad,
         "precio" => $precio,
         "isAdmin" => $isAdmin
     ];

@@ -133,6 +133,8 @@
                     ?>
 
                 </select>
+                <label for="cantidad">Cantidad de prenda</label>
+                <input type="text" name="cantidad" id="nuevo_producto_precio" required>
                 <label for="imagen">Imagen</label>
                 <input type="file" name="imagen" accept="image/*" class="nuevo_producto_imagen" placeholder="Ingresar el archivo de imagen" required>
 

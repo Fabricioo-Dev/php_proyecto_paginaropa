@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="./CSS/productos.css">
 </head>
 
-
 <?php session_start(); ?>
+
 <body>
     <header class="header">
         <div class="logo">
@@ -57,7 +57,7 @@
             url: "./restful_api/productosajax.php",
             type: "get",
             dataType: "json",
-            error: function (xhr, ajaxOptions, thrownError) {
+            error: function(xhr, ajaxOptions, thrownError) {
                 alert(xhr.status);
                 alert(thrownError);
             },
@@ -68,11 +68,12 @@
                 wrapper.innerHTML = "";
                 wrapper.classList.add("wrapper_container_productos");
 
-                console.log("Hola entre a este bucle ajax");
-
-                console.log(data);
-
                 for (const prenda of data) {
+                    let opciones = [];
+                    for (let i = 1; i <= prenda['cantidad']; i++) {
+                        opciones.push(`<option value="${i}">${i}</option>`);
+                    }
+
                     let prendaHtml = `
                     <div class="seccion_container_productos_tarjeta">
                         <img src="./img/productos_img/${prenda['imagen']}" alt="Imagen del producto">
@@ -82,76 +83,37 @@
                         <p>color: ${prenda['color']}</p>
                         <p>precio: ${prenda['precio']}</p>
 
-                        ${prenda['isAdmin'] !== 2 ? `<input id="number" type="number" placeholder="cantidad" required />` : ""}
+                        ${prenda['isAdmin'] !== 2 ? `
+                        <div class="form-group">
+                            <label for="cantidad-${prenda['id_prenda']}">Cantidad:</label>
+                            <select id="cantidad-${prenda['id_prenda']}" name="cantidad" class="form-control custom-select">
+                                ${opciones.join('')}
+                            </select>
+                        </div>
+                        <button type="submit" name="btnAgregar" data-id="${prenda['id_prenda']}" class="btn btn-primary">Agregar al carrito</button>` : ""}
                         
-
-                        ${prenda['isAdmin'] !== 2 ? `<button type="submit" name="btnAgregar" data-id="${prenda['id_prenda']}"><a>Agregar al carrito</a></button>` : ""}
-                        
-                        <?php
-
-                        if(isset($_SESSION['tipo_de_usuario'])){
-                            if ($_SESSION['tipo_de_usuario'] == 1) {
-                            echo "<button type='submit' name='btnEditar'>";
-                            }
-                        }
-
-                        
-                        ?>
-                        ${prenda['isAdmin'] === 1 ? `<a href='./administrador/editar_producto.php?id_prenda=${prenda["id_prenda"]}'>Editar Producto</a>` : "" }
-                        <?php
-
-                        if(isset($_SESSION['tipo_de_usuario'])){
-                            if ($_SESSION['tipo_de_usuario'] == 1) {
-                            echo "</button>";
-                            }
-                        }
-
-                        
-                        ?>
-
-                        <?php
-
-                        if(isset($_SESSION['tipo_de_usuario'])){
-                            if ($_SESSION['tipo_de_usuario'] == 1) {
-                                echo "<button type='submit' name='btnEliminar'>";
-                            }
-                        }
-
-                        ?>
-
-                        ${prenda['isAdmin'] === 1 ? `<a href='./administrador/eliminar_producto.php?prenda_id=${prenda["id_prenda"]}'>Eliminar Producto</a>` : "" }
-
-                        <?php
-
-                        if(isset($_SESSION['tipo_de_usuario'])){
-                            if ($_SESSION['tipo_de_usuario'] == 1) {
-                                echo "</button>";
-                            }
-                        }
-
-
-
-
-
-                        ?>
+                        ${prenda['isAdmin'] === 1 ? `<a href='./administrador/editar_producto.php?id_prenda=${prenda["id_prenda"]}' class="btn btn-edit">Editar Producto</a>` : ""}
+                        ${prenda['isAdmin'] === 1 ? `<a href='./administrador/eliminar_producto.php?prenda_id=${prenda["id_prenda"]}' class="btn btn-delete">Eliminar Producto</a>` : ""}
                     </div>
                     `;
-                    //Tenemos que cerrar el php y poner la variable id_prenda con javaScript
                     wrapper.innerHTML += prendaHtml;
                 }
                 container_producto[0].appendChild(wrapper);
+
                 let botones = document.querySelectorAll('button[name="btnAgregar"]');
-                console.log(botones);
-                botones.forEach(function (boton) {
+                botones.forEach(function(boton) {
                     boton.addEventListener('click', (e) => {
-                        let idPrenda = e.target.parentNode.getAttribute('data-id');
-                        let cantidadPrenda = e.target.parentNode.previousElementSibling.value;
+                        let idPrenda = e.target.getAttribute('data-id');
+                        let cantidadPrenda = document.getElementById(`cantidad-${idPrenda}`).value;
                         $.ajax({
                             url: './restful_api/agregarcarrito.php',
                             type: 'POST',
-                            data: { id: idPrenda, cantidad: cantidadPrenda },
+                            data: {
+                                id: idPrenda,
+                                cantidad: cantidadPrenda
+                            },
                             success: function(response) {
-                                if(cantidadPrenda > 0){
+                                if (cantidadPrenda > 0) {
                                     contador++;
                                     document.querySelector('.carrito-contador').textContent = contador;
                                 }

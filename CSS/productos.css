@@ -5,7 +5,8 @@
     margin: 0;
     padding: 0;
     font-family: 'Nunito', sans-serif;
-    font-size: 20px;
+    font-size: 1rem;
+    /* Use rem units */
 }
 
 a {
@@ -21,16 +22,19 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 85px;
-    padding: 5px 10%;
+    height: 5.3125rem;
+    /* 85px in rem */
+    padding: 0.3125rem 10%;
+    /* 5px in rem */
     color: #89d6ff;
 }
 
 .header .logo img {
-    height: 70px;
+    height: 4.375rem;
+    /* 70px in rem */
     width: auto;
     transition: 0.3s;
-    border-radius: 50px;
+    border-radius: 50%;
 }
 
 .header .logo img:hover {
@@ -43,7 +47,8 @@ header {
 
 .header nav li {
     display: inline-block;
-    padding: 0 20px;
+    padding: 0 1.25rem;
+    /* 20px in rem */
     transition: 0.3s;
 }
 
@@ -53,7 +58,7 @@ header {
 
 .header a {
     text-decoration: none;
-    font-size: 700;
+    font-weight: 700;
     color: #89d6ff;
 }
 
@@ -75,13 +80,14 @@ header {
 
 .header .ingreso button {
     font-weight: 700;
-    padding: 9px 25px;
+    padding: 0.5625rem 1.5625rem;
+    /* 9px 25px in rem */
     color: #89d6ff;
     background: #eceff1;
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    transition: all 0.3s ease 0s;
+    transition: all 0.3s ease;
 }
 
 .header .ingreso button:hover {
@@ -89,32 +95,135 @@ header {
     transform: scale(1);
 }
 
+
+main {
+    padding: 2rem 5%;
+    /* 32px top-bottom and 80px left-right */
+}
+
 main h1 {
     font-size: 3rem;
+    /* 48px */
     text-align: center;
+    margin-bottom: 2rem;
 }
 
 .seccion_container_productos {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid red;
 }
 
 .seccion_container_productos_tarjeta {
     display: flex;
     flex-direction: column;
-    border: 3px solid black;
-    border-radius: 2px;
-    max-width: 200px;
-    margin-left: 10px;
+    border: 1px solid #ddd;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    width: 18rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 1px solid blue;
 }
 
 .seccion_container_productos_tarjeta img {
-    width: 100%;
-    height: 200px;
+    max-width: 100%;
+    /* Asegura que la imagen se ajuste al contenedor */
+    height: auto;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
 }
 
-.wrapper_container_productos {
-    display: flex;
-    flex-direction: row;
+.seccion_container_productos_tarjeta h4 {
+    font-size: 1.25rem;
+    /* Tamaño de fuente para el título */
+    margin-bottom: 0.5rem;
+}
+
+.seccion_container_productos_tarjeta p {
+    margin-bottom: 0.5rem;
+    color: #333;
+    /* Color del texto */
+}
+
+.seccion_container_productos_tarjeta button {
+    background-color: #007bff;
+    /* Color del botón */
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.seccion_container_productos_tarjeta button:hover {
+    background-color: #0056b3;
+    /* Color del botón al pasar el ratón */
+}
+
+.seccion_container_productos_tarjeta .form-group {
+    margin-bottom: 1rem;
+}
+
+.seccion_container_productos_tarjeta .form-group label {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.seccion_container_productos_tarjeta .form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    /* 16px */
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    /* 4px */
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    appearance: none;
+    /* Remove default styling */
+}
+
+.seccion_container_productos_tarjeta .form-group select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.seccion_container_productos_tarjeta .btn-primary {
+    color: #fff;
+    background-color: #007bff;
+}
+
+.seccion_container_productos_tarjeta .btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.seccion_container_productos_tarjeta .btn-edit {
+    color: #fff;
+    background-color: #28a745;
+}
+
+.seccion_container_productos_tarjeta .btn-edit:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.seccion_container_productos_tarjeta .btn-delete {
+    color: #fff;
+    background-color: #dc3545;
+}
+
+.seccion_container_productos_tarjeta .btn-delete:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
 }
