@@ -118,7 +118,7 @@
                     <p>Talle: {$i["talle"]}</p>
                     <p>Precio: \${$i["precio"]}</p>
                     <p>Cantidad: {$cantidad} </p>
-                    <button class='btn-eliminar'><a href='./carrito.php?eliminar={$i['id_prenda']}'>Eliminar</a></button>
+                    <button class='btn-eliminar'><a href='./carrito.php?eliminar={$i['id_prenda']}' class='eliminar'>Eliminar</a></button>
                 </div>
                 ";
 

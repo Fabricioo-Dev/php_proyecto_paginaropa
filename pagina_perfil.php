@@ -46,7 +46,7 @@
                 <h1>Mi cuenta</h1>
                 <h3>DATOS PERSONALES</h3>
                 <hr>
-                <?php 
+                <?php
                 echo "<p>{$_SESSION['nombre']} {$_SESSION['apellido']} </p>";
                 echo "<p>{$_SESSION['correo']}</p>";
                 ?>
@@ -54,10 +54,9 @@
             </div>
         </div>
         <div class="contenedor_pedidos">
-            <h2>Mis pedidos</h2>
+            <?php include './Backend/mostrar_pedidos.php'; ?>
         </div>
     </main>
 </body>
-
 
 </html>

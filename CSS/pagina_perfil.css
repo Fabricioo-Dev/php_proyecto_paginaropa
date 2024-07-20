@@ -1,122 +1,213 @@
-    /*--- Estilos para el NAV ---*/
-    @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+/*--- Estilos para el NAV ---*/
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000&display=swap');
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family: 'Nunito', sans-serif;
-        font-size: 20px;
-    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    /* Ajusté el tamaño a un valor más estándar */
+}
 
-    header {
-        background-color: #0d1723e3;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 5.3125rem;
-        padding: 5px 10%;
-        color: #89d6ff;
-    }
+header {
+    background-color: #0d1723e3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5.3125rem;
+    padding: 5px 10%;
+    color: #89d6ff;
+}
 
-    .header .logo img {
-        height: 70px;
-        width: auto;
-        transition: 0.3s;
-        border-radius: 50px;
-    }
+.header .logo img {
+    height: 70px;
+    width: auto;
+    transition: 0.3s;
+    border-radius: 50px;
+}
 
-    .header .logo img:hover {
-        transform: scale(1.07);
-    }
+.header .logo img:hover {
+    transform: scale(1.07);
+}
 
-    .header nav {
-        list-style: none;
-    }
+.header nav {
+    list-style: none;
+}
 
-    .header nav li {
-        display: inline-block;
-        padding: 0 20px;
-        transition: 0.3s;
-    }
+.header nav li {
+    display: inline-block;
+    padding: 0 20px;
+    transition: 0.3s;
+}
 
-    .header nav li:hover {
-        transform: scale(1.1);
-    }
+.header nav li:hover {
+    transform: scale(1.1);
+}
 
-    .header a {
-        text-decoration: none;
-        font-size: 700;
-        color: #89d6ff;
-    }
+.header a {
+    text-decoration: none;
+    font-size: 700;
+    color: #89d6ff;
+}
 
-    .carrito {
-        color: #89d6ff;
-    }
+.carrito {
+    color: #89d6ff;
+}
 
-    .ingreso {
-        transition: 0.3s;
-    }
+.ingreso {
+    transition: 0.3s;
+}
 
-    .ingreso .registrar {
-        color: #89d6ff;
-    }
+.ingreso .registrar {
+    color: #89d6ff;
+}
 
-    .ingreso:hover {
-        transform: scale(1.1);
-    }
+.ingreso:hover {
+    transform: scale(1.1);
+}
 
-    .header .ingreso button {
-        font-weight: 700;
-        padding: 9px 25px;
-        color: #89d6ff;
-        background: #eceff1;
-        border: none;
-        border-radius: 50px;
-        cursor: pointer;
-        transition: all 0.3s ease 0s;
-    }
+.header .ingreso button {
+    font-weight: 700;
+    padding: 9px 25px;
+    color: #89d6ff;
+    background: #eceff1;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
 
-    .header .ingreso button:hover {
-        background-color: #ffffff;
-        transform: scale(1);
-    }
+.header .ingreso button:hover {
+    background-color: #ffffff;
+    transform: scale(1);
+}
 
-    body {
-        margin: 0;
-        padding: 0;
-        background-color: #dbeaff;
-        font-family: Arial, sans-serif;
-        color: rgb(12, 11, 11);
-        /* Color blanco para el texto */
-        }
-    
-        a {
-            text-decoration: none;
-        }
-    
-    /*-----FIN HEADER-----*/
+/* Estilos para el main */
+.main {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    height: calc(100vh - 5.3125rem);
+    /* Ajusta la altura para llenar el espacio restante */
+}
 
-    .main{
-        border: 1px solid red;
-        width: 100%;
-        height: auto;
-    }
-    .mi_cuenta {
-        margin-left: 10px;
-        width: 400px;
-        color: rgb(12, 11, 11);
-    }
+/* Contenedor para las dos secciones */
+.contenedor_cuenta,
+.contenedor_pedidos {
+    flex: 1;
+    /* Ocupa el espacio restante */
+    margin: 0 10px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-    .mi_cuenta h1 {
-        font-size: 40px;
-    }
+.contenedor_cuenta {
+    max-width: 400px;
+    /* Ajusta el ancho máximo si es necesario */
+}
 
-    .mi_cuenta h3 {
-        font-size: 20px;
-    }
+.contenedor_pedidos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-    .cerrar_sesion {
-        text-decoration: none;
-        color: #0f1b36;
-    }
+/* Estilos para los títulos y botones */
+.mi_cuenta h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.mi_cuenta h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.mi_cuenta p {
+    margin-bottom: 8px;
+}
+
+button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.cerrar_sesion {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.cerrar_sesion:hover {
+    color: #d3d3d3;
+}
+
+/* Línea horizontal */
+hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+/* Estilos para la tabla de pedidos */
+.tabla_pedidos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    background-color: #ffffff;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.tabla_pedidos thead {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.tabla_pedidos th,
+.tabla_pedidos td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 0.0625rem solid #ddd;
+}
+
+.tabla_pedidos tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.tabla_pedidos th {
+    font-weight: 600;
+}
+
+.tabla_pedidos a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.tabla_pedidos a:hover {
+    text-decoration: underline;
+}
+
+.tabla_pedidos td:last-child {
+    text-align: center;
+}

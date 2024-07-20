@@ -24,7 +24,7 @@ if (strlen($_POST['email']) > 0 && strlen($_POST['contraseña']) > 0){
         $_SESSION['correo'] = $usuario['correo'];
         $_SESSION['tipo_de_usuario']= $usuario['tipo_de_usuario'];
         $_SESSION['id_usuario'] = $usuario['id_usuario'];
-        header('location:../index.php');//header('location'); me ayuda a redirigir al usuario 
+        header('location:../index.php');
         exit();
     } else {
             // Mostramos un mensaje de datos incorrectos

@@ -11,6 +11,7 @@ if(isset($_POST['subir'])){
     $id_marca = $_POST["marca"];
     $imagen = $_FILES['imagen']['name'].rand(1,1000); //se usa FILES en vez de POST ya que es un archivo lo que se guarda
     $imagen_tmp = $_FILES['imagen']['tmp_name']; // Obtener la ubicación temporal del archivo
+    $cantidad = $_POST["cantidad"];
     $precio = $_POST["precio"];
 
     // Mover el archivo de imagen al directorio deseado
@@ -22,7 +23,7 @@ if(isset($_POST['subir'])){
 
         if(isset($id_marca) && isset($id_proveedor)){
 
-            $consulta = "UPDATE prenda SET id_marca='$id_marca',id_proveedor='$id_proveedor',nombre='$nombre',descripcion='$descripcion',color='$color',talle='$tallas',imagen='$imagen',precio='$precio' WHERE id_prenda = {$_GET['id_prenda']}";
+            $consulta = "UPDATE prenda SET id_marca='$id_marca',id_proveedor='$id_proveedor',nombre='$nombre',descripcion='$descripcion',color='$color',talle='$tallas',cantidad='$cantidad',imagen='$imagen',precio='$precio' WHERE id_prenda = {$_GET['id_prenda']}";
 
             $resultado = mysqli_query($conexion, $consulta);
         } 

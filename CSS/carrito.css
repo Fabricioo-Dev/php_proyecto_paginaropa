@@ -144,6 +144,11 @@ main {
     cursor: pointer;
     transition: background-color 0.3s ease;
     align-self: center;
+    text-decoration: none;
+}
+.btn-eliminar .eliminar{
+    text-decoration: none;
+    color: #ffffff;
 }
 
 .btn-eliminar:hover {

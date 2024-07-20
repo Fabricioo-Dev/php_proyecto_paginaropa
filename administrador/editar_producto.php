@@ -116,10 +116,10 @@
                         }
                         echo ">{$i["nombre"]} </option>";
                     }
-
                     ?>
-
                 </select>
+                <label for="cantidad">Cantidad de prenda</label>
+                <input type="text" name="cantidad" id="nuevo_producto_precio" value="<?php echo $resultado_obtenido['cantidad'] ?>" required>
                 <label for="imagen">Imagen</label>
                 <input type="file" name="imagen" accept="image/*" class="nuevo_producto_imagen" placeholder="Ingresar el archivo de imagen" required>
 
