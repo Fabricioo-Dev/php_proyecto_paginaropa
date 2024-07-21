@@ -7,7 +7,7 @@ if ($_SESSION['tipo_de_usuario'] != 1) {
 include 'conexionBD.php';
 
 // Consulta para obtener los pedidos del usuario
-$consulta = "SELECT * FROM carrito WHERE id_usuario = {$_SESSION['id_usuario']} ORDER BY fecha DESC";
+$consulta = "SELECT id_orden, fecha FROM carrito WHERE id_usuario = {$_SESSION['id_usuario']} GROUP BY id_orden ORDER BY fecha DESC";
 $resultado = mysqli_query($conexion, $consulta);
 
 // Verificar si hay resultados

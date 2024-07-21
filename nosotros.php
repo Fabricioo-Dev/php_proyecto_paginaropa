@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!------ Font Awesome ------->
     <script src="https://kit.fontawesome.com/5f6de38f20.js" crossorigin="anonymous"></script>
-    <!-----CSS----->
     <link rel="stylesheet" href="./CSS/nosotros.css">
     <title>Nosotros</title>
+    <!------ Font Awesome ------->
+    <script src="https://kit.fontawesome.com/5f6de38f20.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -35,7 +35,6 @@
                 <?php }; ?>
             </ul>
         </nav>
-
         <div class="ingreso">
             <?php
             if (isset($_SESSION['nombre'])) { ?>
@@ -46,13 +45,24 @@
         </div>
     </header>
 
-    <main class="productos">
-        <h1>Contactaa con nuestras Redes</h1>
-        <p>En esta seccion hablar sobre este proyecto ficticio de una tienda de ropa onlina y abajo nuestras redes</p>
-        <a href="">Elite</a>
-        <div class="seccion1">
-
-        </div>
+    <main class="nosotros">
+        <h1>Sobre Nosotros</h1>
+        <p>Bienvenidos a Elite, una tienda online de ropa ficticia creada como proyecto para la materia de Bases de Datos 2 en la Licenciatura en Sistemas en la Universidad Champagnat de Mendoza. Elite ha sido diseñado para demostrar nuestras habilidades en el desarrollo web, combinando HTML, CSS, JavaScript, PHP y phpMyAdmin para ofrecer una experiencia de compra online completa y funcional.</p>
+        <p>La tienda ha sido desarrollada utilizando las siguientes tecnologías:</p>
+        <ul class="tecnologias">
+            <li><img src="./img/logos_nosotros/html5_img.png" alt="HTML Logo">HTML</li>
+            <li><img src="./img/logos_nosotros/CSS3_logo_and_wordmark.svg.png" alt="CSS Logo"> CSS</li>
+            <li><img src="./img/logos_nosotros/Unofficial_JavaScript_logo_2.svg.png" alt="JavaScript Logo"> JavaScript</li>
+            <li><img src="./img/logos_nosotros/PHP-logo.svg.png" alt="PHP Logo"> PHP</li>
+            <li><img src="./img/logos_nosotros/phpmyadmin-icon-6.png" alt="phpMyAdmin Logo"> phpMyAdmin</li>
+        </ul>
+        <p>Fecha del proyecto: 2024</p>
+        <p>Desarrolladores:</p>
+        <ul class="desarrolladores">
+            <li>Fabricio Funes - <a href="https://www.linkedin.com/in/fabricio-funes-dev/" target="_blank">LinkedIn</a></li>
+            <li>Urial Cabrera - <a href="https://www.linkedin.com/in/urialcabrera" target="_blank">LinkedIn</a></li>
+            <li>Tomas Liñán - <a href="https://www.linkedin.com/in/tomaslinan" target="_blank">LinkedIn</a></li>
+        </ul>
     </main>
 </body>
 

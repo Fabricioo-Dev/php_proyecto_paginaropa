@@ -18,7 +18,7 @@ body {
 }
 
 header {
-    background-color: #0d1723e3;
+    background-color: #0d1723;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -191,4 +191,87 @@ main {
     background: #89d6fff5;
     padding: 0.1rem;
     border-radius: 1rem;
+}
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        height: auto;
+        padding: 0.5rem 2%;
+    }
+
+    .header nav li {
+        display: block;
+        padding: 0.625rem 0;
+    }
+
+    .header .logo img {
+        height: 3.125rem;
+    }
+
+    .productos,
+    .proveedor,
+    .marca,
+    .producto {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .proveedor,
+    .marca,
+    .producto {
+        width: 100%;
+    }
+
+    form[action="nuevo_productoBD.php"] input[name="descripcion"] {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Estilos para pantallas medianas (tabletas) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .header {
+        padding: 0.5rem 5%;
+    }
+
+    .header nav li {
+        padding: 0 1.875rem;
+    }
+
+    .productos,
+    .proveedor,
+    .marca,
+    .producto {
+        width: 100%;
+        margin-left: 0.3125rem;
+    }
+
+    .proveedor,
+    .marca,
+    .producto {
+        width: 100%;
+    }
+
+    form[action="nuevo_productoBD.php"] input[name="descripcion"] {
+        width: 6.25rem;
+        height: 6.25rem;
+    }
+}
+
+/* Estilos para pantallas grandes (escritorios) */
+@media (min-width: 769px) {
+    .header {
+        padding: 0.5rem 10%;
+    }
+
+    .header nav li {
+        padding: 0 2rem;
+    }
+
+    .proveedor,
+    .marca,
+    .producto {
+        width: 50%;
+    }
 }

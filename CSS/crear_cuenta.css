@@ -11,7 +11,7 @@ body {
 
 /* Estilos para el header */
 .header-inicio {
-    background-color: #0d1722;
+    background-color: #0d1723;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,4 +84,123 @@ body {
 .ingreso button:hover {
     background-color: #052d4f;
     /* Cambia de color al pasar el ratón */
+}
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    body {
+        font-size: 1rem;
+        /* Ajusta el tamaño de fuente para móviles */
+    }
+
+    .header-inicio {
+        height: 4.375rem;
+        /* Ajusta la altura del header */
+    }
+
+    .header-inicio img {
+        height: 3.75rem;
+        /* Ajusta el tamaño del logo */
+    }
+
+    .ingreso {
+        margin: 2.8125rem auto;
+        /* Ajusta el margen superior */
+        padding: 1.25rem;
+        /* Ajusta el padding */
+        width: 90%;
+        max-width: 100%;
+        box-shadow: 0.1875rem 0.3125rem 0.625rem rgba(0, 0, 0, 0.5);
+        /* Ajusta la sombra */
+    }
+
+    .ingreso h1 {
+        margin-bottom: 1.25rem;
+        /* Ajusta el margen inferior */
+    }
+
+    .ingreso input[type="submit"],
+    .ingreso button {
+        padding: 0.625rem;
+        /* Ajusta el padding */
+    }
+}
+
+/* Estilos para pantallas medianas (tabletas) */
+@media (min-width: 481px) and (max-width: 768px) {
+    body {
+        font-size: 1.125rem;
+        /* Ajusta el tamaño de fuente para tabletas */
+    }
+
+    .header-inicio {
+        height: 4.375rem;
+        /* Ajusta la altura del header */
+    }
+
+    .header-inicio img {
+        height: 4rem;
+        /* Ajusta el tamaño del logo */
+    }
+
+    .ingreso {
+        margin: 2.8125rem auto;
+        /* Ajusta el margen superior */
+        padding: 1.875rem;
+        /* Ajusta el padding */
+        width: 85%;
+        max-width: 100%;
+        box-shadow: 0.1875rem 0.3125rem 0.625rem rgba(0, 0, 0, 0.5);
+        /* Ajusta la sombra */
+    }
+
+    .ingreso h1 {
+        margin-bottom: 1.875rem;
+        /* Ajusta el margen inferior */
+    }
+
+    .ingreso input[type="submit"],
+    .ingreso button {
+        padding: 0.75rem;
+        /* Ajusta el padding */
+    }
+}
+
+/* Estilos para pantallas grandes (escritorios) */
+@media (min-width: 769px) {
+    body {
+        font-size: 1.25rem;
+        /* Ajusta el tamaño de fuente para pantallas grandes */
+    }
+
+    .header-inicio {
+        height: 4.375rem;
+        /* Ajusta la altura del header */
+    }
+
+    .header-inicio img {
+        height: 4rem;
+        /* Ajusta el tamaño del logo */
+    }
+
+    .ingreso {
+        margin: 2.8125rem auto;
+        /* Ajusta el margen superior */
+        padding: 2.5rem;
+        /* Ajusta el padding */
+        width: 80%;
+        max-width: 400px;
+        box-shadow: 0.1875rem 0.3125rem 0.625rem rgba(0, 0, 0, 0.5);
+        /* Ajusta la sombra */
+    }
+
+    .ingreso h1 {
+        margin-bottom: 2.5rem;
+        /* Ajusta el margen inferior */
+    }
+
+    .ingreso input[type="submit"],
+    .ingreso button {
+        padding: 0.75rem;
+        /* Ajusta el padding */
+    }
 }
