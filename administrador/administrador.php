@@ -153,7 +153,7 @@
                 // Descartar resultados
             }
 
-            $consulta = "SELECT usuario.nombre, carrito.id_orden, carrito.id_prenda,carrito.cantidad FROM usuario INNER JOIN carrito ON usuario.id_usuario = carrito.id_usuario";
+            $consulta = "SELECT usuario.nombre, carrito.id_orden, carrito.id_prenda,carrito.cantidad,prenda.nombre as 'nombrePrenda' FROM usuario INNER JOIN carrito ON usuario.id_usuario = carrito.id_usuario INNER JOIN prenda ON prenda.id_prenda = carrito.id_prenda";
             $resultado = mysqli_query($conexion, $consulta);
 
             if (!$resultado) {
@@ -161,12 +161,13 @@
             } else {
                 if ($resultado->num_rows > 0) {
                     echo "<table border='1'>";
-                    echo "<tr><th>Nombre de Usuarios</th><th>ID del Pedido</th><th>ID de prenda</th><th>Unidad por prenda</th></tr>";
+                    echo "<tr><th>Nombre de Usuarios</th><th>ID del Pedido</th><th>ID de prenda</th><th>Nombre prenda</th><th>Unidad por prenda</th></tr>";
                     while ($row = $resultado->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td>" . ($row['nombre']) . "</td>";
                         echo "<td>" . ($row['id_orden']) . "</td>";
                         echo "<td>" . ($row['id_prenda']) . "</td>";
+                        echo "<td>" . ($row['nombrePrenda']) . "</td>";
                         echo "<td>" . ($row['cantidad']) . "</td>";
                         echo "</tr>";
                     }
