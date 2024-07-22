@@ -120,6 +120,11 @@ main h1 {
     border: 1px solid red;
 }
 
+.wrapper_container_productos {
+    display: flex !important;
+    gap: 0.5rem;
+}
+
 .seccion_container_productos_tarjeta {
     display: flex;
     flex-direction: column;

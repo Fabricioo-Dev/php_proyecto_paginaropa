@@ -83,7 +83,7 @@
                                     ${opciones}
                                 </select>
                             </div>
-                            <button type="submit" name="btnAgregar" data-id="${prenda['id_prenda']}" class="btn btn-primary">Agregar al carrito</button>` : ""}
+                            ${prenda['cantidad'] > 0 ? `<button type="submit" name="btnAgregar" data-id="${prenda['id_prenda']}" class="btn btn-primary">Agregar al carrito</button>` : "<p>No hay stock</p>" } ` : ""}
                             
                             ${prenda['isAdmin'] === 1 ? `<a href='./administrador/editar_producto.php?id_prenda=${prenda["id_prenda"]}' class="btn btn-edit">Editar Producto</a>` : ""}
                             ${prenda['isAdmin'] === 1 ? `<a href='./administrador/eliminar_producto.php?prenda_id=${prenda["id_prenda"]}' class="btn btn-delete">Eliminar Producto</a>` : ""}

@@ -1,7 +1,7 @@
 <?php
 // detalles_pedido.php
 
-if ($_SESSION['tipo_de_usuario'] != 1) {
+if ($_SESSION['tipo_de_usuario'] == 2) {
     header('location: ./login.php');
 }
 include 'conexionBD.php';
