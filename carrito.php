@@ -136,7 +136,7 @@
 
         <?php
         } else  if (isset($_GET['compra']) && $_GET['compra'] == 'exitosa') {
-            echo "<p>Compra realizada con éxito. El carrito está vacío.</p>";
+            echo "<p>Compra realizada con éxito. El carrito está vacío. Para revisar tus pedidos haz click <a href='./pagina_perfil.php'>aqui</a></p>";
         } else {
             echo "<p>No hay producto Cargado</p>";
         }

@@ -58,7 +58,7 @@
                 <label for="nombre">Nombre Proveedor</label>
                 <input type="text" name="nombre" required>
                 <label for="telefono">Telefono Proveedor</label>
-                <input type="text" name="telefono" id="nuevo_producto_precio" required>
+                <input type="number" name="telefono" id="nuevo_producto_precio" required>
                 <label for="gmail">Correo Electronico</label>
                 <input type="text" name="gmail" required>
                 <input type="submit" value="Nuevo proveedor" class="btn_nuevo_proveedor">
@@ -97,7 +97,7 @@
                 <label for="color">Color</label>
                 <input type="text" name="color" required>
                 <label for="precio">Precio</label>
-                <input type="text" name="precio" id="nuevo_producto_precio" required>
+                <input type="number" name="precio" id="nuevo_producto_precio" required>
                 <label for="marca">Marca</label>
                 <select name="marca" id="productos_marca">
                     <?php
@@ -216,12 +216,6 @@
         }
     }
 
-
-
-
-    setInputFilter(document.getElementById("nuevo_producto_precio"), function(value) {
-        return /^\d*\.?\d*$/.test(value); // Permite solo valores digitos (numericos)
-    }, "Solo valores numericos se pueden añadir");
 
 
 

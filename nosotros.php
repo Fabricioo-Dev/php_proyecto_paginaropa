@@ -60,7 +60,7 @@
         <p>Desarrolladores:</p>
         <ul class="desarrolladores">
             <li>Fabricio Funes - <a href="https://www.linkedin.com/in/fabricio-funes-dev/" target="_blank">LinkedIn</a></li>
-            <li>Urial Cabrera - <a href="https://www.linkedin.com/in/urialcabrera" target="_blank">LinkedIn</a></li>
+            <li>Uriel Cabrera - <a href="https://github.com/uricabrera" target="_blank">Github</a></li>
             <li>Tomas Liñán - <a href="https://www.linkedin.com/in/tomaslinan" target="_blank">LinkedIn</a></li>
         </ul>
     </main>

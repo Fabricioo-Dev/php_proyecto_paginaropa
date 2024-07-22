@@ -68,7 +68,7 @@
 
                 Fundada en la vibrante ciudad de Mendoza, ELITE es el resultado de la pasión y dedicación de los
                 creadores Tomas
-                Liñan y Fabricio Funes. Cada remera refleja nuestra dedicación a la excelencia, combinando materiales
+                Liñan, Fabricio Funes y Uriel Cabrera. Cada remera refleja nuestra dedicación a la excelencia, combinando materiales
                 premium,
                 diseños innovadores y una atención meticulosa a los detalles.
 
