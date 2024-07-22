@@ -103,7 +103,7 @@
                     <?php
                     include "./../Backend/conexionBD.php";
 
-                    $consulta = "SELECT nombre, id_marca FROM marca";
+                    $consulta = "SELECT * FROM marcanombreidvista";
 
                     $resultado_marca = mysqli_query($conexion, $consulta);
 
@@ -161,7 +161,7 @@
             } else {
                 if ($resultado->num_rows > 0) {
                     echo "<table border='1'>";
-                    echo "<tr><th>Nombre de Usuarios</th><th>ID del Pedido</th><th>ID de prenda</th><th>Nombre prenda</th><th>Unidad por prenda</th></tr>";
+                    echo "<tr><th>Nombre de Usuarios</th><th>Numero De Orden</th><th>ID de prenda</th><th>Nombre prenda</th><th>Unidad por prenda</th></tr>";
                     while ($row = $resultado->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td>" . ($row['nombre']) . "</td>";
