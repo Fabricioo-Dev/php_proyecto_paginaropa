@@ -144,6 +144,39 @@
                 <input type="submit" value="Subir nuevo producto" name="subir">
             </form>
         </div>
+        <h4><b>Mostrar Usuarios y Pedidos</b></h4>
+        <!--Mostrar usuarios con sus pedidos-->
+        <div class="usuarios_pedidos">
+            <?php
+            // Manejar resultados pendientes
+            while ($conexion->more_results() && $conexion->next_result()) {
+                // Descartar resultados
+            }
+
+            $consulta = "SELECT usuario.nombre, carrito.id_orden, carrito.id_prenda,carrito.cantidad FROM usuario INNER JOIN carrito ON usuario.id_usuario = carrito.id_usuario";
+            $resultado = mysqli_query($conexion, $consulta);
+
+            if (!$resultado) {
+                echo "Error en la consulta: " . mysqli_error($conexion);
+            } else {
+                if ($resultado->num_rows > 0) {
+                    echo "<table border='1'>";
+                    echo "<tr><th>Nombre de Usuarios</th><th>ID del Pedido</th><th>ID de prenda</th><th>Unidad por prenda</th></tr>";
+                    while ($row = $resultado->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . ($row['nombre']) . "</td>";
+                        echo "<td>" . ($row['id_orden']) . "</td>";
+                        echo "<td>" . ($row['id_prenda']) . "</td>";
+                        echo "<td>" . ($row['cantidad']) . "</td>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                } else {
+                    echo "No se encontraron usuarios con pedidos.";
+                }
+            }
+            ?>
+        </div>
     </main>
 
 </body>

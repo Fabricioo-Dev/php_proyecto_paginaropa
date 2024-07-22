@@ -176,6 +176,55 @@ main {
     justify-content: center;
     align-items: center;
 }
+/*-----Usuarios y pedidos-----*/
+
+.usuarios_pedidos {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 90%;
+    overflow-x: auto;
+}
+
+/* Estilos para la tabla */
+.usuarios_pedidos table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Estilos para las cabeceras de la tabla */
+.usuarios_pedidos th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Estilos para las celdas de la tabla */
+.usuarios_pedidos td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Estilo para las filas alternadas */
+.usuarios_pedidos tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Estilo para las filas al pasar el cursor por encima */
+.usuarios_pedidos tr:hover {
+    background-color: #ddd;
+}
+
+/* Estilo para el texto dentro de la tabla */
+.usuarios_pedidos td,
+.usuarios_pedidos th {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
 
 /*----- Editar_Producto -----*/
 
