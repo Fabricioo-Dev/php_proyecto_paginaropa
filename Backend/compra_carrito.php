@@ -6,15 +6,16 @@ if (isset($_POST['hacer_compra'])) {
     include 'conexionBD.php';
 
     // Variables para almacenar los datos de la compra
-    $usuarioId = $_SESSION['id_usuario']; // Suponiendo que el ID del usuario está almacenado en la sesión
+    $usuarioId = $_SESSION['id_usuario']; 
+
     $fechaCompra = date('Y-m-d H:i:s');
     $dia = date("Ymd");
     $valuerandom = strtoupper(substr(uniqid(sha1(time())), 0, 4));
     $valororden = $dia . $valuerandom;
+    //el valororden es un id unico para que no existan ordenes iguales de compra se une la fecha en el que se realizo y lo junta con un hash unico
 
     // Deshabilitar el autocommit
     $conexion->autocommit(FALSE);
-
     $insercionesExitosas = true;
 
     // Recorrer el carrito y preparar los datos para la inserción

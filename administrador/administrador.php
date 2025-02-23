@@ -110,9 +110,6 @@
                     while ($i = $resultado_marca->fetch_assoc()) {
                         echo "<option value='{$i["id_marca"]}'> {$i["nombre"]} </option>";
                     }
-
-
-
                     ?>
 
                 </select>
@@ -144,6 +141,7 @@
                 <input type="submit" value="Subir nuevo producto" name="subir">
             </form>
         </div>
+
         <h4><b>Mostrar Usuarios y Pedidos</b></h4>
         <!--Mostrar usuarios con sus pedidos-->
         <div class="usuarios_pedidos">
@@ -199,14 +197,12 @@
                     this.oldSelectionStart = this.selectionStart;
                     this.oldSelectionEnd = this.selectionEnd;
                 } else if (this.hasOwnProperty("oldValue")) {
-                    // Rejected value: restore the previous one.
                     this.classList.add("input-error");
                     this.setCustomValidity(errMsg);
                     this.reportValidity();
                     this.value = this.oldValue;
                     this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
                 } else {
-                    // Rejected value: nothing to restore.
                     this.value = "";
                 }
             });

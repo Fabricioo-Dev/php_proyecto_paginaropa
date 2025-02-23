@@ -19,13 +19,17 @@ a{
     justify-content: center;
     align-items: center;
     /* Centrar verticalmente */
-    height: 70px;
+    height: 4.375 rem;
 }
 
 .header-inicio img {
-    height: 60px;
+    height: 4.7rem;
     /* Ajusta el tamaño del logo */
     width: auto;
+    transition: transform 0.3s ease;
+}
+.header-inicio img:hover {
+    transform: scale(1.1);
 }
 
 /* Estilos para el formulario de ingreso */
@@ -98,7 +102,7 @@ a{
 .mensaje_error {
     color: rgb(228, 45, 45);
     text-align: center;
-    font-size: 10px;
+    font-size: 0.88rem;
 }
 
 /* Media query para pantallas de 768px o menos (tablets y móviles en modo horizontal) */

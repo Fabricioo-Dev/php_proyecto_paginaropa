@@ -5,11 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
-
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/5f6de38f20.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
     <!-- CSS -->
     <link rel="stylesheet" href="./CSS/productos.css">
 </head>
@@ -25,7 +23,10 @@
             <ul>
                 <li class="#Nosotros"><a href="nosotros.php">Nosotros</a></li>
                 <li class="#Productos"><a href="productos.php">Prendas</a></li>
-                <li class="carrito"><a href="carrito.php" class="carrito">Carrito <i class="fa-solid fa-cart-shopping"></i> <span class="carrito-contador"> <?php echo isset($_SESSION["carrito"]) ? count($_SESSION["carrito"]) :  0; ?> </span> </a></li>
+                <li class="carrito"><a href="carrito.php" class="carrito">Carrito <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="carrito-contador">
+                            <?php echo isset($_SESSION["carrito"]) ? count($_SESSION["carrito"]) :  0; ?>
+                        </span> </a></li>
                 <?php if (isset($_SESSION['tipo_de_usuario']) && $_SESSION['tipo_de_usuario'] == 1) { ?>
                     <li class="#administrador"><a href="./administrador/administrador.php">Administradores</a></li>
                 <?php }; ?>
@@ -62,8 +63,10 @@
                 let container_producto = document.getElementsByClassName("seccion_container_productos")[0];
                 let wrapper = document.createElement("div");
                 wrapper.classList.add("wrapper_container_productos");
+                console.log(data);
 
                 data.forEach(prenda => {
+                    // Genera opciones de cantidad según el stock disponible. Crea un array con "cantidad" elementos, mapea cada índice (i) a un <option> con valores de 1 a "cantidad" y los une en un solo string.  
                     let opciones = Array.from({
                         length: prenda['cantidad']
                     }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
@@ -83,7 +86,7 @@
                                     ${opciones}
                                 </select>
                             </div>
-                            ${prenda['cantidad'] > 0 ? `<button type="submit" name="btnAgregar" data-id="${prenda['id_prenda']}" class="btn btn-primary">Agregar al carrito</button>` : "<p>No hay stock</p>" } ` : ""}
+                            ${prenda['cantidad'] > 0 ? `<button type="submit" name="btnAgregar" data-id="${prenda['id_prenda']}" class="btn btn-primary"> Agregar al carrito </button>` : "<p>No hay stock</p>" } ` : ""}
                             
                             ${prenda['isAdmin'] === 1 ? `<a href='./administrador/editar_producto.php?id_prenda=${prenda["id_prenda"]}' class="btn btn-edit">Editar Producto</a>` : ""}
                             ${prenda['isAdmin'] === 1 ? `<a href='./administrador/eliminar_producto.php?prenda_id=${prenda["id_prenda"]}' class="btn btn-delete">Eliminar Producto</a>` : ""}

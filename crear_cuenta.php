@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+<?php session_start(); ?>
 
 <head>
     <meta charset="UTF-8">
@@ -23,64 +24,15 @@
             <input type="text" name="email" required><br>
             <label for="contraseña">Contraseña</label><br>
             <input type="password" name="contrasenia" required><br>
-            <!--<label for="tipo_usuario">Normal</label>
-            <input type="radio" name="tipo_usuario" value="normal" id="tipo_usuario_normal">
-            <label for="tipo_usuario">Admin</label>
-            <input type="radio" name="tipo_usuario" value="admin" id="tipo_usuario_admin">
-            -->
             <input type="submit" value="Crear Cuenta" class="btn-iniciar-sesion">
         </form>
-    </div>
-
-    <?php
-    // include 'crear_usuarioBD.php';
-    ?>
-</body>
-
-<!--<script>
-    function insertAfter(newNode, existingNode) {
-        existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
-    }
-
-
-
-    let checkbox = document.getElementById("tipo_usuario_admin");
-
-    let checkbox_normal = document.getElementById("tipo_usuario_normal");
-
-    checkbox.addEventListener("change", () => {
-        if (checkbox.checked === true) {
-            let input = document.createElement("input");
-            input.type = "text";
-            input.name = "clave_admin";
-            input.id = "clave_admin";
-            let label = document.createElement("label");
-            label.textContent = "Insertar clave admin";
-            label.id = "label_admin";
-            insertAfter(label, checkbox);
-            insertAfter(input, label);
-        } 
-    })
-
-
-    checkbox_normal.addEventListener("change", () => {
-        if (checkbox.checked === true) {
-            let input_admin = document.getElementById("clave_admin");
-            let label_admin = document.getElementById("label_admin");
-            input_admin.remove();
-            label_admin.remove();
-        } else if (checkbox.checked === false) {
-            let input_admin = document.getElementById("clave_admin");
-            let label_admin = document.getElementById("label_admin");
-            input_admin.remove();
-            label_admin.remove();
-        } else {
-            let input_admin = document.getElementById("clave_admin");
-            let label_admin = document.getElementById("label_admin");
-            input_admin.remove();
-            label_admin.remove();
+        <?php
+        if (isset($_SESSION['error_crear_usuario'])) {
+            echo "<p class='mensaje_error'>" . $_SESSION['error_crear_usuario'] . "</p>";
+            unset($_SESSION['error_crear_usuario']);
         }
-    })
-</script>-->
+        ?>
+    </div>
+</body>
 
 </html>

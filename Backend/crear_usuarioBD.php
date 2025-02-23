@@ -1,9 +1,7 @@
 <?php 
 include 'conexionBD.php';
 
-
-
-//en esta linea se confirma si se mando el formulario 
+session_start();
 //en esta con strlen se obtiene la longitud de los campos del form y se verifica que se hayan completado
 if (strlen($_POST['nombre']) > 3 && strlen($_POST['apellido']) > 3 && strlen($_POST['email']) > 3 && strlen($_POST['contrasenia']) > 3){
     //trim() me sirve para sacar los espacios en blancos asi llega el codigo limpio a la BD
@@ -34,6 +32,12 @@ if (strlen($_POST['nombre']) > 3 && strlen($_POST['apellido']) > 3 && strlen($_P
     } else {
         // Mostramos un mensaje de datos incorrectos
         echo "<h3>Datos incorrectos. Inténtelo nuevamente.</h3>";
+        echo "Error: " . $conexion->error;
     }
+} else {
+    $_SESSION['error_crear_usuario'] = "Campos del formulario incorrectos";
+    header('Location: ../crear_cuenta.php');  
+    exit();
 }
+
 ?>

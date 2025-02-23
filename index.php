@@ -57,7 +57,7 @@
     <!----- MAIN ----->
     <main>
         <section class="nosotros">
-            <h2>Proyecto de tienda de remeras por Fabricio, Tomas y Uriel</h2>
+            <h2>Proyecto de tienda de remeras por Fabricio, Uriel</h2>
             <p>"ELITE: Elegancia y Distinción en Cada Fibra
 
                 Descubre ELITE, la marca que redefinirá tu estilo con sus remeras de algodón de primera calidad. Con un

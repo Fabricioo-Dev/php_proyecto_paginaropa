@@ -79,8 +79,7 @@
 
             for ($i = 0; $i < count($_SESSION['carrito']); $i++) {
                 if ($i == 0) {
-                    $stringIds = $stringIds . "(";
-                    $stringIds = $stringIds . $_SESSION['carrito'][$i]['id'] . ",";
+                    $stringIds = "(" . $_SESSION['carrito'][$i]['id'] . ",";
                 }
                 if ($i != 0 && ($i + 1) != count($_SESSION['carrito'])) {
                     $stringIds = $stringIds . $_SESSION['carrito'][$i]['id'] . ",";
@@ -91,7 +90,7 @@
                     $stringIds = $stringIds . ")";
                 }
             }
-
+            // aca se hace una consulta ya que se armo el string con todos los id de prendas
             $consulta = "SELECT * FROM prenda WHERE id_prenda IN " . $stringIds . ";";
 
             $resultado_carrito = mysqli_query($conexion, $consulta);
@@ -100,7 +99,6 @@
 
             $total = 0;
             while ($i = $resultado_carrito->fetch_assoc()) {
-
 
                 $cantidad;
 

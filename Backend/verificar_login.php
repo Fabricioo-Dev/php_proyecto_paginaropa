@@ -14,11 +14,9 @@ if (strlen($_POST['email']) > 0 && strlen($_POST['contraseña']) > 0){
     // Ejecutamos la consulta en la base de datos
     $resultado = mysqli_query($conexion, $consulta);
 
-
+    session_start();
     if($resultado && mysqli_num_rows($resultado) > 0){
-
         $usuario = mysqli_fetch_assoc($resultado);
-        session_start();
         $_SESSION['nombre'] = $usuario['nombre'];
         $_SESSION['apellido'] = $usuario['apellido'];
         $_SESSION['correo'] = $usuario['correo'];
@@ -27,12 +25,10 @@ if (strlen($_POST['email']) > 0 && strlen($_POST['contraseña']) > 0){
         header('location:../index.php');
         exit();
     } else {
-            // Mostramos un mensaje de datos incorrectos
-            $mensaje_error = "<p class='mensaje_error'>Usuario no encontrado. Por favor, cree una cuenta <a href='./crear_cuenta.php'>aquí</a>.</p>";
-    }
-    } else {
-        $mensaje_error = "<p class='mensaje_error'>Usuario no encontrado</p>";
+        $_SESSION['error_login'] = "Usuario o contraseña incorrectos...";
+        header('Location: ../login.php');  // Redirige a login.php
+        exit();
     }
 }
-include "./login.php";
+}
 ?>

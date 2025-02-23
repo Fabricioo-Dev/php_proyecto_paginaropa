@@ -85,6 +85,11 @@ body {
     background-color: #052d4f;
     /* Cambia de color al pasar el ratón */
 }
+.mensaje_error {
+    color: rgb(228, 45, 45);
+    text-align: center;
+    font-size: 0.88rem;
+}
 /* Estilos para pantallas pequeñas (móviles) */
 @media (max-width: 480px) {
     body {
