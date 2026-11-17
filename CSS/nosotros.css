@@ -1,0 +1,186 @@
+/* =========================================
+   NOSOTROS (nosotros.php)
+   Portada con logotipo, datos del proyecto, creadores y tecnologías.
+   Depende de base.css.
+   ========================================= */
+.nosotros {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 5vw, 2rem) 4rem;
+}
+
+/* ---------- Portada ---------- */
+.nosotros_portada {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 7vw, 5rem) 0 clamp(2rem, 5vw, 3rem);
+    text-align: center;
+}
+
+.nosotros_portada .logo {
+    margin-bottom: 2rem;
+}
+
+.nosotros_portada h1 {
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+}
+
+.nosotros_portada p {
+    color: var(--muted);
+}
+
+/* ---------- Datos del proyecto ---------- */
+.nosotros_datos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 1px;
+    background-color: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.dato {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1.5rem 1.25rem;
+    background-color: var(--paper);
+}
+
+.dato i {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    color: var(--accent);
+}
+
+.dato_titulo {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.dato_valor {
+    font-weight: 600;
+}
+
+/* ---------- Bloques con título ---------- */
+.nosotros_bloque {
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+}
+
+.bloque_titulo {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--line);
+}
+
+.bloque_texto {
+    margin-bottom: 1.25rem;
+    color: var(--muted);
+}
+
+/* ---------- Creadores ---------- */
+.creadores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.25rem;
+}
+
+.creador {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.75rem;
+    background-color: var(--surface);
+    border-radius: var(--radius-lg);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.creador:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.creador_inicial {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1.25rem;
+    font-weight: 800;
+    color: var(--paper);
+    background-color: var(--ink);
+    border-radius: 50%;
+}
+
+.creador p {
+    margin: 0.15rem 0 1.25rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.creador a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 0.2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-bottom: 2px solid var(--accent);
+}
+
+/* ---------- Tecnologías ---------- */
+.tecnologias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+    gap: 1rem;
+    list-style: none;
+}
+
+.tecnologias li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 1.5rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    transition: border-color 0.2s ease, transform 0.25s ease;
+}
+
+.tecnologias li:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.tecnologias img {
+    width: 2.75rem;
+    height: 2.75rem;
+    object-fit: contain;
+}
+
+.tecnologias span {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+@media (max-width: 480px) {
+    .tecnologias {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

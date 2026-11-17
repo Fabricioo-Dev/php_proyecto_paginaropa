@@ -1,0 +1,144 @@
+/* =========================================
+   ACCESO (login.php y crear_cuenta.php)
+   Tarjeta centrada con el formulario de ingreso o registro.
+   Depende de base.css.
+   ========================================= */
+body {
+    min-height: 100vh;
+    background-color: var(--surface);
+}
+
+.ingreso {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: calc(100% - 2rem);
+    max-width: 26rem;
+    margin: clamp(1.5rem, 6vw, 3.5rem) auto;
+    padding: clamp(1.25rem, 5vw, 2.5rem);
+    background-color: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.ingreso h1 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.ingreso form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.ingreso label {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.ingreso input[type="text"],
+.ingreso input[type="email"],
+.ingreso input[type="password"] {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    background-color: var(--paper);
+    border: 1px solid #cfcfca;
+    border-radius: var(--radius);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ingreso input:focus {
+    outline: none;
+    border-color: var(--ink);
+    box-shadow: 0 0 0 3px rgba(176, 138, 74, 0.25);
+}
+
+/* Botón principal (enviar formulario) */
+.ingreso input[type="submit"] {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background-color: var(--ink);
+    border: 1px solid var(--ink);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.ingreso input[type="submit"]:hover {
+    background-color: var(--paper);
+    color: var(--ink);
+}
+
+/* Botón secundario (el enlace "Crear Cuenta" del login) */
+.ingreso button {
+    width: 100%;
+    margin-top: 0.75rem;
+    padding: 0;
+    background-color: var(--paper);
+    border: 1px solid var(--ink);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.ingreso button:hover {
+    background-color: var(--surface);
+}
+
+.ingreso button a {
+    display: block;
+    padding: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* Ojito para mostrar u ocultar la contraseña */
+.contenedor-password {
+    position: relative;
+    width: 100%;
+}
+
+.contenedor-password input[type="password"],
+.contenedor-password input[type="text"] {
+    padding-right: 2.75rem;
+}
+
+.contenedor-password i {
+    position: absolute;
+    top: 50%;
+    right: 0.9rem;
+    transform: translateY(-50%);
+    color: var(--muted);
+    cursor: pointer;
+}
+
+.mensaje_error {
+    font-size: 0.85rem;
+    text-align: center;
+    color: var(--danger);
+}
+
+.link_login {
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
+    text-align: center;
+    color: var(--muted);
+}
+
+.link_login a {
+    color: var(--ink);
+    font-weight: 600;
+    border-bottom: 2px solid var(--accent);
+}

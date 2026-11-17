@@ -1,0 +1,404 @@
+/* =========================================
+   CATÁLOGO (productos.php)
+   Filtros, navegación por categoría y grilla de tarjetas.
+   Depende de base.css.
+   ========================================= */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+    width: 100%;
+    padding-bottom: 3rem;
+}
+
+main h1 {
+    margin: 2.5rem 0 1.5rem;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* ---------- Filtros ---------- */
+.filtros_productos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem 1.25rem;
+    max-width: 62rem;
+    margin: 0 auto 1.25rem;
+    padding: 1rem clamp(1rem, 3vw, 1.5rem);
+    background-color: var(--surface);
+    border-radius: var(--radius-lg);
+}
+
+.filtros_productos label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.filtros_productos select,
+.filtros_productos input[type="text"] {
+    min-width: 0;
+    padding: 0.55rem 0.8rem;
+    font-size: 0.9rem;
+    background-color: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.filtros_productos select:focus,
+.filtros_productos input[type="text"]:focus {
+    outline: none;
+    border-color: var(--ink);
+}
+
+/* ---------- Navegación por categoría (chips) ---------- */
+.categorias_nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0 clamp(1rem, 5vw, 4rem) 1.75rem;
+}
+
+.categorias_nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.95rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background-color: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.categorias_nav a span {
+    font-size: 0.7rem;
+    color: var(--muted);
+}
+
+.categorias_nav a:hover {
+    color: var(--paper);
+    background-color: var(--ink);
+    border-color: var(--ink);
+}
+
+.categorias_nav a:hover span {
+    color: var(--accent);
+}
+
+/* ---------- Secciones por categoría ---------- */
+.categoria_seccion {
+    padding: 0 clamp(1rem, 5vw, 4rem) 2.5rem;
+    scroll-margin-top: 5.5rem;
+}
+
+.categoria_titulo {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.7rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--line);
+}
+
+.categoria_contador {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: var(--muted);
+}
+
+.sin_resultados {
+    padding: 3rem 1rem;
+    text-align: center;
+    color: var(--muted);
+}
+
+/* ---------- Grilla de tarjetas ---------- */
+.seccion_container_productos {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper_container_productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
+    gap: 1.5rem 1rem;
+    align-items: stretch;
+}
+
+.seccion_container_productos_tarjeta {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+    padding: 0.6rem;
+    background-color: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.seccion_container_productos_tarjeta:hover {
+    transform: translateY(-5px);
+    border-color: #cfcfca;
+    box-shadow: var(--shadow-md);
+}
+
+.seccion_container_productos_tarjeta .img-wrapper {
+    flex-shrink: 0;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    background-color: var(--surface);
+    border-radius: var(--radius);
+}
+
+.seccion_container_productos_tarjeta img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s ease;
+}
+
+.seccion_container_productos_tarjeta:hover img {
+    transform: scale(1.04);
+}
+
+.seccion_container_productos_tarjeta h4 {
+    margin-bottom: 0.3rem;
+    font-size: 1rem;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.seccion_container_productos_tarjeta p {
+    margin-bottom: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.seccion_container_productos_tarjeta p.precio {
+    margin-top: 0.2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.seccion_container_productos_tarjeta p.sin-stock {
+    margin-top: auto;
+    font-weight: 600;
+    color: var(--danger);
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+}
+
+/* Selector de talle y cantidad */
+.seccion_container_productos_tarjeta .form-group {
+    margin-bottom: 0.6rem;
+    text-align: left;
+}
+
+.seccion_container_productos_tarjeta .form-group label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.seccion_container_productos_tarjeta .form-group select {
+    width: 100%;
+    padding: 0.5rem 0.65rem;
+    font-size: 0.9rem;
+    background-color: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.seccion_container_productos_tarjeta .form-group select:focus {
+    outline: none;
+    border-color: var(--ink);
+}
+
+.seccion_container_productos_tarjeta .form-group select option:disabled {
+    color: #b0b0b0;
+    font-style: italic;
+}
+
+/* Botones de la tarjeta (<button> y <a class="btn">) */
+.seccion_container_productos_tarjeta button,
+.seccion_container_productos_tarjeta a.btn {
+    display: block;
+    width: 100%;
+    padding: 0.7rem 1rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-align: center;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.seccion_container_productos_tarjeta .btn-primary {
+    color: var(--paper);
+    background-color: var(--ink);
+    border-color: var(--ink);
+}
+
+.seccion_container_productos_tarjeta .btn-primary:hover {
+    color: var(--ink);
+    background-color: var(--paper);
+}
+
+/* Acciones de administrador: botones secundarios con borde */
+.seccion_container_productos_tarjeta .btn-edit,
+.seccion_container_productos_tarjeta .btn-delete {
+    padding: 0.5rem 1rem;
+    background-color: var(--paper);
+}
+
+.seccion_container_productos_tarjeta .btn-edit {
+    color: var(--ink);
+    border-color: var(--ink);
+}
+
+.seccion_container_productos_tarjeta .btn-edit:hover {
+    color: var(--paper);
+    background-color: var(--ink);
+}
+
+.seccion_container_productos_tarjeta .btn-delete {
+    color: var(--danger);
+    border-color: var(--danger);
+}
+
+.seccion_container_productos_tarjeta .btn-delete:hover {
+    color: var(--paper);
+    background-color: var(--danger);
+}
+
+/* Empuja los botones al fondo para que las tarjetas de una fila queden alineadas */
+.seccion_container_productos_tarjeta p.precio + .form-group,
+.seccion_container_productos_tarjeta p.precio + a.btn {
+    margin-top: auto;
+}
+
+.seccion_container_productos_tarjeta a.btn {
+    margin-bottom: 0.5rem;
+}
+
+.seccion_container_productos_tarjeta form {
+    margin-top: 0.4rem;
+}
+
+/* Tarjeta elegida desde el inicio (productos.php#prenda-ID) */
+.seccion_container_productos_tarjeta.resaltada {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent), var(--shadow-md);
+}
+
+/* ---------- Notificación flotante ---------- */
+.notificacion {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 100;
+    max-width: calc(100% - 2rem);
+    padding: 0.85rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+.notificacion.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.notificacion.success {
+    color: var(--paper);
+    background-color: var(--ink);
+}
+
+.notificacion.error {
+    color: var(--danger);
+    background-color: #fbefee;
+    border: 1px solid #f0cfcb;
+}
+
+/* ---------- Celular ---------- */
+@media (max-width: 768px) {
+    .wrapper_container_productos {
+        grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr));
+        gap: 1.25rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .filtros_productos {
+        margin: 0 1rem 1.25rem;
+    }
+
+    .filtros_productos select,
+    .filtros_productos input[type="text"] {
+        flex: 1 1 100%;
+    }
+
+    .wrapper_container_productos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+    }
+
+    .seccion_container_productos_tarjeta {
+        padding: 0.5rem;
+    }
+
+    .seccion_container_productos_tarjeta h4 {
+        font-size: 0.9rem;
+    }
+
+    .seccion_container_productos_tarjeta button,
+    .seccion_container_productos_tarjeta a.btn {
+        padding: 0.6rem 0.4rem;
+        font-size: 0.68rem;
+        letter-spacing: 0.04em;
+    }
+}

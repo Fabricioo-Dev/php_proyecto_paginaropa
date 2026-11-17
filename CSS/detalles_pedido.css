@@ -1,0 +1,96 @@
+/* =========================================
+   DETALLE DE PEDIDO (Backend/detalles_pedido.php)
+   Tabla con las prendas de una compra y el total pagado.
+   Depende de base.css.
+   ========================================= */
+body {
+    background-color: var(--surface);
+}
+
+main.contenido_detalles {
+    max-width: 62rem;
+    margin: clamp(1rem, 4vw, 2.5rem) auto;
+    padding: clamp(1.25rem, 4vw, 2.25rem);
+    background-color: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    width: calc(100% - 1.5rem);
+}
+
+main.contenido_detalles h2 {
+    margin-bottom: 1rem;
+}
+
+main.contenido_detalles h3 {
+    margin-top: 1.25rem;
+    font-size: 1.25rem;
+}
+
+/* ---------- Tabla ---------- */
+.tabla_scroll {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabla_detalles {
+    width: 100%;
+    min-width: 32rem;
+    border-collapse: collapse;
+}
+
+.tabla_detalles th,
+.tabla_detalles td {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+}
+
+.tabla_detalles th {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--paper);
+    background-color: var(--ink);
+}
+
+.tabla_detalles tbody tr:hover {
+    background-color: var(--surface);
+}
+
+.mensaje_exito {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--success);
+}
+
+.boton_volver {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--paper);
+    background-color: var(--ink);
+    border: 1px solid var(--ink);
+    border-radius: var(--radius);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.boton_volver:hover {
+    color: var(--ink);
+    background-color: var(--paper);
+}
+
+@media (max-width: 480px) {
+    .boton_volver {
+        display: block;
+    }
+}

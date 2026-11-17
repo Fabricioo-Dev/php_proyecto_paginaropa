@@ -1,0 +1,197 @@
+/* =========================================
+   INICIO (index.php)
+   Portada, colección destacada y pie de página.
+   Depende de base.css.
+   ========================================= */
+
+/* ---------- Portada ---------- */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: clamp(3rem, 8vw, 6rem) 1.25rem clamp(2.5rem, 6vw, 4rem);
+    text-align: center;
+}
+
+.hero_etiqueta {
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+}
+
+.hero_titulo {
+    margin-bottom: 1.5rem;
+    font-size: clamp(2rem, 7vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.hero_texto {
+    max-width: 38rem;
+    margin-bottom: 1rem;
+    color: var(--muted);
+}
+
+.hero_boton {
+    margin-top: 1rem;
+    padding: 0.9rem 2.25rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background-color: var(--ink);
+    border: 1px solid var(--ink);
+    border-radius: var(--radius);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.hero_boton:hover {
+    background-color: var(--paper);
+    color: var(--ink);
+}
+
+/* ---------- Mensajes ---------- */
+.contenedor_mensaje {
+    max-width: 38rem;
+    margin: 1.5rem auto 0;
+    padding: 0 1.25rem;
+}
+
+/* ---------- Nueva colección ---------- */
+.remeras {
+    padding: 2rem 0 3rem;
+    border-top: 1px solid var(--line);
+}
+
+.remeras h2 {
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+}
+
+.destacadas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr));
+    gap: 1.5rem 1.25rem;
+    max-width: 66rem;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 5vw, 4rem);
+}
+
+.destacada {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    padding: 0.5rem 0.5rem 0.75rem;
+    color: var(--ink);
+    background-color: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.destacada:hover {
+    transform: translateY(-5px);
+    border-color: #cfcfca;
+    box-shadow: var(--shadow-md);
+}
+
+.destacada img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    transition: transform 0.4s ease;
+}
+
+.destacada:hover img {
+    transform: scale(1.03);
+}
+
+.destacada_categoria {
+    margin-top: 0.7rem;
+    padding: 0 0.25rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.destacada h3 {
+    margin-top: 0.15rem;
+    padding: 0 0.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.destacada p {
+    margin-top: 0.1rem;
+    padding: 0 0.25rem;
+    font-weight: 700;
+}
+
+.ver_todas {
+    margin-top: 2.5rem;
+    text-align: center;
+}
+
+.ver_todas a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding-bottom: 0.3rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--accent);
+    transition: gap 0.2s ease;
+}
+
+.ver_todas a:hover {
+    gap: 1rem;
+}
+
+.sin_prendas {
+    text-align: center;
+    color: var(--muted);
+}
+
+/* ---------- Pie de página ---------- */
+footer {
+    padding: 1.75rem clamp(1rem, 5vw, 4rem);
+    border-top: 1px solid var(--line);
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+footer a {
+    color: var(--ink);
+    font-weight: 600;
+    border-bottom: 1px solid var(--accent);
+}
+
+@media (max-width: 480px) {
+    .destacadas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem 0.75rem;
+    }
+
+    .destacada h3 {
+        font-size: 0.9rem;
+    }
+}

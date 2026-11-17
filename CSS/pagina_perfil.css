@@ -1,0 +1,155 @@
+/* =========================================
+   PERFIL (pagina_perfil.php)
+   Datos de la cuenta y tabla con el historial de pedidos.
+   Depende de base.css.
+   ========================================= */
+body {
+    background-color: var(--surface);
+}
+
+.main {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    min-height: calc(100vh - var(--header-alto));
+    padding: clamp(0.75rem, 3vw, 2rem) clamp(0.75rem, 5vw, 4rem);
+}
+
+.contenedor_cuenta,
+.contenedor_pedidos {
+    min-width: 0;
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+    background-color: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.contenedor_cuenta {
+    flex: 0 1 22rem;
+}
+
+.contenedor_pedidos {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.contenedor_pedidos h2 {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.contenedor_pedidos > p {
+    color: var(--muted);
+    text-align: center;
+}
+
+/* ---------- Datos de la cuenta ---------- */
+.mi_cuenta h1 {
+    margin-bottom: 1.25rem;
+    font-size: 1.4rem;
+}
+
+.mi_cuenta h3 {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+}
+
+.mi_cuenta p {
+    margin-bottom: 0.4rem;
+    overflow-wrap: anywhere;
+}
+
+hr {
+    margin: 0.6rem 0 1rem;
+    border: 0;
+    border-top: 1px solid var(--line);
+}
+
+.mi_cuenta button {
+    margin-top: 1rem;
+    padding: 0;
+    background-color: var(--ink);
+    border: 1px solid var(--ink);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.mi_cuenta button:hover {
+    background-color: var(--paper);
+}
+
+.cerrar_sesion {
+    display: block;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--paper);
+}
+
+.mi_cuenta button:hover .cerrar_sesion {
+    color: var(--ink);
+}
+
+/* ---------- Tabla de pedidos ---------- */
+.tabla_scroll {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabla_pedidos {
+    width: 100%;
+    min-width: 28rem;
+    border-collapse: collapse;
+}
+
+.tabla_pedidos th,
+.tabla_pedidos td {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+}
+
+.tabla_pedidos th {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--paper);
+    background-color: var(--ink);
+}
+
+.tabla_pedidos tbody tr:hover {
+    background-color: var(--surface);
+}
+
+.tabla_pedidos a {
+    font-weight: 600;
+    border-bottom: 2px solid var(--accent);
+}
+
+.tabla_pedidos td:last-child {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+        align-items: stretch;
+        min-height: 0;
+    }
+
+    .contenedor_cuenta,
+    .contenedor_pedidos {
+        flex: none;
+    }
+}
